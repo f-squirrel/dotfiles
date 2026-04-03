@@ -7,7 +7,6 @@
     jq
     just
     wget
-    zellij
     btop
     keepassxc
     neovim
