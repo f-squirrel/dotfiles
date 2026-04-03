@@ -15,9 +15,18 @@ in
 
       font = {
         size = 12.0;
-        normal = { family = "JetBrainsMono Nerd Font"; style = "Regular"; };
-        bold = { family = "JetBrainsMono Nerd Font"; style = "Bold"; };
-        italic = { family = "JetBrainsMono Nerd Font"; style = "Italic"; };
+        normal = {
+          family = "JetBrainsMono Nerd Font";
+          style = "Regular";
+        };
+        bold = {
+          family = "JetBrainsMono Nerd Font";
+          style = "Bold";
+        };
+        italic = {
+          family = "JetBrainsMono Nerd Font";
+          style = "Italic";
+        };
       };
 
       colors = {
@@ -48,13 +57,41 @@ in
       };
 
       keyboard.bindings = [
-        { key = "Q"; mods = "Control"; chars = dc1; }
-        { key = "B"; mods = "Alt"; chars = "${esc}b"; }
-        { key = "B"; mods = "Alt|Shift"; chars = "${esc}B"; }
-        { key = "F"; mods = "Alt"; chars = "${esc}f"; }
-        { key = "F"; mods = "Alt|Shift"; chars = "${esc}F"; }
-        { key = "F11"; mods = "None"; action = "ToggleFullscreen"; }
-        { key = "Return"; mods = "Shift"; chars = "${esc}${cr}"; }
+        {
+          key = "Q";
+          mods = "Control";
+          chars = dc1;
+        }
+        {
+          key = "B";
+          mods = "Alt";
+          chars = "${esc}b";
+        }
+        {
+          key = "B";
+          mods = "Alt|Shift";
+          chars = "${esc}B";
+        }
+        {
+          key = "F";
+          mods = "Alt";
+          chars = "${esc}f";
+        }
+        {
+          key = "F";
+          mods = "Alt|Shift";
+          chars = "${esc}F";
+        }
+        {
+          key = "F11";
+          mods = "None";
+          action = "ToggleFullscreen";
+        }
+        {
+          key = "Return";
+          mods = "Shift";
+          chars = "${esc}${cr}";
+        }
       ];
 
       terminal.shell.program = "zsh";
