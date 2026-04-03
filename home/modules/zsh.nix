@@ -15,6 +15,7 @@ _: {
     };
     initContent = ''
       source <(just --completions zsh)
+      export PIP_REQUIRE_VIRTUALENV=true
     '';
   };
 }
