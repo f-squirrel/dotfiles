@@ -379,7 +379,7 @@ keybinds clear-defaults=true {
             }
         }
         bind "Alt d" {
-            Run "/home/dima/scripts/utils/git-diff-view.sh" {
+            Run "git-diff-view.sh" {
                 floating true
                 close_on_exit true
                 width "100%"
@@ -406,7 +406,7 @@ keybinds clear-defaults=true {
             }
         }
         bind "Alt v" {
-            Run "/home/dima/scripts/utils/vscode-open.sh" {
+            Run "vscode-open.sh" {
                 floating true
                 close_on_exit true
                 width "30%"
