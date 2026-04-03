@@ -5,10 +5,8 @@ username := "dima"
 # Apply Home Manager configuration for the current system
 apply:
     #!/usr/bin/env sh
-    arch=$(uname --machine)
-    os=$(uname --kernel-name | tr '[:upper:]' '[:lower:]')
-    [ "$arch" = "arm64" ] && arch="aarch64"
-    home-manager switch --flake ".#{{ username }}@${arch}-${os}"
+    system=$(nix eval --raw --impure --expr builtins.currentSystem)
+    home-manager switch --flake ".#{{ username }}@${system}"
 
 # Update all flake inputs
 nix-update:
@@ -21,10 +19,8 @@ nix-check:
 # Build Home Manager configuration for the current system without applying
 nix-build:
     #!/usr/bin/env sh
-    arch=$(uname --machine)
-    os=$(uname --kernel-name | tr '[:upper:]' '[:lower:]')
-    [ "$arch" = "arm64" ] && arch="aarch64"
-    nix build ".#homeConfigurations.{{ username }}@${arch}-${os}.activationPackage" --print-out-paths
+    system=$(nix eval --raw --impure --expr builtins.currentSystem)
+    nix build ".#homeConfigurations.{{ username }}@${system}.activationPackage" --print-out-paths
 
 # Run a nix-shell with the Home Manager configuration for the current system
 nix-shell:

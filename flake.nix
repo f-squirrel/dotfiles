@@ -10,9 +10,10 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }:
+    { nixpkgs, home-manager, self }:
     let
       username = "dima";
+      systems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
       mkHome =
         system:
         home-manager.lib.homeManagerConfiguration {
@@ -22,11 +23,11 @@
         };
     in
     {
-      homeConfigurations = {
-        "${username}@x86_64-linux" = mkHome "x86_64-linux";
-        "${username}@aarch64-linux" = mkHome "aarch64-linux";
-        "${username}@x86_64-darwin" = mkHome "x86_64-darwin";
-        "${username}@aarch64-darwin" = mkHome "aarch64-darwin";
-      };
+      homeConfigurations = builtins.listToAttrs (
+        map (system: {
+          name = "${username}@${system}";
+          value = mkHome system;
+        }) systems
+      );
     };
 }
