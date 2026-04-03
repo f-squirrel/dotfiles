@@ -5,6 +5,7 @@
     ./modules/eza.nix
     ./modules/fzf.nix
     ./modules/git.nix
+    ./modules/glow.nix
     ./modules/packages.nix
     ./modules/ripgrep.nix
     ./modules/zellij.nix

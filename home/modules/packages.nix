@@ -4,6 +4,7 @@
     brave
     curl
     fd
+    glow
     jq
     just
     wget
