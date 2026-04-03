@@ -5,7 +5,6 @@
     ./modules/eza.nix
     ./modules/fzf.nix
     ./modules/git.nix
-    ./modules/glow.nix
     ./modules/packages.nix
     ./modules/packages-darwin.nix
     ./modules/ripgrep.nix
