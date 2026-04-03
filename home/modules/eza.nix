@@ -12,5 +12,6 @@ _: {
     ll = "eza -l";
     la = "eza -la";
     lt = "eza --tree";
+    llt = "eza -l --sort=modified --reverse --no-permissions --no-user";
   };
 }
