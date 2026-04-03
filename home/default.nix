@@ -8,6 +8,7 @@
     ./modules/glow.nix
     ./modules/packages.nix
     ./modules/ripgrep.nix
+    ./modules/vale.nix
     ./modules/zellij.nix
     ./modules/zsh.nix
   ];
