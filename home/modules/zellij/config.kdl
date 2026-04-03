@@ -379,7 +379,7 @@ keybinds clear-defaults=true {
             }
         }
         bind "Alt d" {
-            Run "git-diff-view.sh" {
+            Run "git" "diff" {
                 floating true
                 close_on_exit true
                 width "100%"
