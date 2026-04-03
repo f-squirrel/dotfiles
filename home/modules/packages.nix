@@ -6,7 +6,6 @@
     fd
     jq
     just
-    ripgrep
     wget
     zellij
     btop

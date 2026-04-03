@@ -5,6 +5,7 @@
     ./modules/fzf.nix
     ./modules/git.nix
     ./modules/packages.nix
+    ./modules/ripgrep.nix
     ./modules/zsh.nix
   ];
 
