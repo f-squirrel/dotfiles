@@ -9,5 +9,6 @@
     wget
     zellij
     keepassxc
+    neovim
   ];
 }
