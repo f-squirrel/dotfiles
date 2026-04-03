@@ -29,3 +29,8 @@ nix-build:
 # Run a nix-shell with the Home Manager configuration for the current system
 nix-shell:
     nix shell ./result/home-path
+
+# Build and run a fresh Docker container to test the Home Manager configuration from scratch
+docker-test:
+    docker build --file Dockerfile.test --tag dotfiles-test .
+    docker run --rm --interactive --tty dotfiles-test
