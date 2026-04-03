@@ -2,6 +2,7 @@
 set -e
 
 # Install Nix (daemon/multi-user mode)
+# shellcheck disable=SC3001
 sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
 
 # Enable flakes
