@@ -13,5 +13,8 @@ _: {
       enable = true;
       theme = "miloshadzic";
     };
+    initContent = ''
+      source <(just --completions zsh)
+    '';
   };
 }
