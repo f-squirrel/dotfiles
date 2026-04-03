@@ -8,7 +8,6 @@
     ./modules/packages.nix
     ./modules/packages-darwin.nix
     ./modules/ripgrep.nix
-    ./modules/vale.nix
     ./modules/zellij.nix
     ./modules/zsh.nix
   ];
