@@ -19,7 +19,7 @@ nix-check:
     nix flake check
 
 # Build Home Manager configuration for the current system without applying
-nix-test:
+nix-build:
     #!/usr/bin/env sh
     arch=$(uname --machine)
     os=$(uname --kernel-name | tr '[:upper:]' '[:lower:]')
