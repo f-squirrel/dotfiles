@@ -8,6 +8,7 @@
     ripgrep
     wget
     zellij
+    btop
     keepassxc
     neovim
   ];
