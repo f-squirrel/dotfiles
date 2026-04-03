@@ -8,5 +8,6 @@
     ripgrep
     wget
     zellij
+    keepassxc
   ];
 }
