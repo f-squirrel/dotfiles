@@ -8,10 +8,7 @@
 
   home = {
     inherit username;
-    homeDirectory =
-      if pkgs.stdenv.isDarwin
-      then "/Users/${username}"
-      else "/home/${username}";
+    homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${username}" else "/home/${username}";
 
     # Do not change this when upgrading Home Manager.
     # See https://home-manager.nix.community/options.html#opt-home.stateVersion
