@@ -6,4 +6,11 @@ _: {
     git = true;
     extraOptions = [ "--group-directories-first" "--header" ];
   };
+
+  programs.zsh.shellAliases = {
+    ls = "eza";
+    ll = "eza -l";
+    la = "eza -la";
+    lt = "eza --tree";
+  };
 }
