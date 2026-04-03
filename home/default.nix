@@ -2,6 +2,7 @@
 {
   imports = [
     ./modules/alacritty.nix
+    ./modules/eza.nix
     ./modules/fzf.nix
     ./modules/git.nix
     ./modules/packages.nix
