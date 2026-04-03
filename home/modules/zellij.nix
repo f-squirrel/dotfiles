@@ -9,7 +9,7 @@
 
   home.file = {
     ".local/bin/vscode-open.sh" = {
-      source = ./scripts/utils/vscode-open.sh;
+      source = ../../scripts/utils/vscode-open.sh;
       executable = true;
     };
   };
