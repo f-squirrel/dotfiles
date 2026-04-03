@@ -24,4 +24,4 @@ nix-test:
     arch=$(uname --machine)
     os=$(uname --kernel-name | tr '[:upper:]' '[:lower:]')
     [ "$arch" = "arm64" ] && arch="aarch64"
-    nix build ".#homeConfigurations.{{ username }}@${arch}-${os}" --print-out-paths
+    nix build ".#homeConfigurations.{{ username }}@${arch}-${os}.activationPackage" --print-out-paths
