@@ -4,9 +4,7 @@ username := "dima"
 
 # Apply Home Manager configuration for the current system
 apply:
-    #!/usr/bin/env sh
-    system=$(nix eval --raw --impure --expr builtins.currentSystem)
-    home-manager switch --flake ".#{{ username }}@${system}"
+    nix run .#apply
 
 # Update all flake inputs
 nix-update:
@@ -18,9 +16,7 @@ nix-check:
 
 # Build Home Manager configuration for the current system without applying
 nix-build:
-    #!/usr/bin/env sh
-    system=$(nix eval --raw --impure --expr builtins.currentSystem)
-    nix build ".#homeConfigurations.{{ username }}@${system}.activationPackage" --print-out-paths
+    nix run .#build
 
 # Run a nix-shell with the Home Manager configuration for the current system
 nix-shell:
