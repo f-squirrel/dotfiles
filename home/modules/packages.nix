@@ -7,5 +7,6 @@
     just
     ripgrep
     wget
+    zellij
   ];
 }
