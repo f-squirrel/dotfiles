@@ -1,6 +1,7 @@
 { username, pkgs, ... }:
 {
   imports = [
+    ./modules/alacritty.nix
     ./modules/git.nix
     ./modules/packages.nix
     ./modules/zsh.nix
