@@ -1,6 +1,7 @@
 # dotfiles
 
-Personal Nix-based environment setup for Linux and macOS.
+Personal Nix-based environment setup for Linux and macOS,
+managed with [Home Manager](https://github.com/nix-community/home-manager).
 
 ## Bootstrap
 
@@ -8,6 +9,21 @@ Install Nix (daemon/multi-user mode):
 
 ```sh
 sh setup.sh
+```
+
+That's it — Nix is installed, flakes are enabled, and Home Manager
+configuration is applied in one step.
+
+## Structure
+
+```text
+flake.nix           # Flake inputs and homeConfigurations outputs
+home/
+  default.nix       # Top-level Home Manager config
+  modules/
+    git.nix         # Git configuration
+    packages.nix    # Common CLI packages
+    zsh.nix         # Zsh shell configuration
 ```
 
 ## Repository tooling
@@ -27,6 +43,8 @@ just init
 
 | Target             | Description                                                  |
 |--------------------|--------------------------------------------------------------|
+| `just apply`       | Apply Home Manager configuration for the current system      |
+| `just update`      | Update all flake inputs                                      |
 | `just init`        | Symlink linter configs from the submodule into the repo root |
 | `just lint`        | Run all linters                                              |
 | `just commit-lint` | Validate commits against Conventional Commits specification  |
