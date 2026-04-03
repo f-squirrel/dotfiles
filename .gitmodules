@@ -1,0 +1,3 @@
+[submodule "repo-setup"]
+	path = repo-setup
+	url = git@github.com:f-squirrel/repo-setup.git
