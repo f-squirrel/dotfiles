@@ -25,3 +25,7 @@ nix-test:
     os=$(uname --kernel-name | tr '[:upper:]' '[:lower:]')
     [ "$arch" = "arm64" ] && arch="aarch64"
     nix build ".#homeConfigurations.{{ username }}@${arch}-${os}.activationPackage" --print-out-paths
+
+# Run a nix-shell with the Home Manager configuration for the current system
+nix-shell:
+    nix shell ./result/home-path
