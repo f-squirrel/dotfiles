@@ -9,5 +9,9 @@ _: {
       ignoreDups = true;
       share = true;
     };
+    oh-my-zsh = {
+      enable = true;
+      theme = "miloshadzic";
+    };
   };
 }
