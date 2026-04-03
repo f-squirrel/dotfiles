@@ -11,5 +11,17 @@ apply:
     home-manager switch --flake ".#{{ username }}@${arch}-${os}"
 
 # Update all flake inputs
-update:
+nix-update:
     nix flake update
+
+# Validate flake structure
+nix-check:
+    nix flake check
+
+# Build Home Manager configuration for the current system without applying
+nix-test:
+    #!/usr/bin/env sh
+    arch=$(uname --machine)
+    os=$(uname --kernel-name | tr '[:upper:]' '[:lower:]')
+    [ "$arch" = "arm64" ] && arch="aarch64"
+    nix build ".#homeConfigurations.{{ username }}@${arch}-${os}" --print-out-paths
