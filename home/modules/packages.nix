@@ -16,6 +16,6 @@
     python3Packages.virtualenv
     shellcheck
     vale
-    claude-code-nix
+    claude-code
   ];
 }
