@@ -36,18 +36,13 @@
         hmConfig = self.homeConfigurations."${username}@${system}";
       in
       {
+        packages = {
+          activation = hmConfig.activationPackage;
+        };
         apps = {
           apply = {
             type = "app";
             program = "${hmConfig.activationPackage}/activate";
-          };
-          build = {
-            type = "app";
-            program = toString (
-              nixpkgs.legacyPackages.${system}.writeShellScript "build-home" ''
-                echo "${hmConfig.activationPackage}"
-              ''
-            );
           };
         };
         defaultApp = self.apps.${system}.apply;
