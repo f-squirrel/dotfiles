@@ -17,5 +17,6 @@
     shellcheck
     vale
     claude-code
+    devcontainer
   ];
 }
