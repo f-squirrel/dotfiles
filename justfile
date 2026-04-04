@@ -16,7 +16,7 @@ nix-check:
 
 # Build Home Manager configuration for the current system without applying
 nix-build:
-    nix run .#build
+    nix build ".#packages.$(nix eval --raw --impure --expr builtins.currentSystem).activation"
 
 # Run a nix-shell with the Home Manager configuration for the current system
 nix-shell:
