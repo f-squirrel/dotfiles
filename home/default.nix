@@ -1,4 +1,4 @@
-{ username, pkgs, ... }:
+{ username, pkgs, lib, ... }:
 {
   imports = [
     ./modules/alacritty.nix
@@ -10,6 +10,10 @@
     ./modules/ripgrep.nix
     ./modules/zellij.nix
     ./modules/zsh.nix
+  ];
+
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "claude-code"
   ];
 
   home = {
