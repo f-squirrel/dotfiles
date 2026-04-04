@@ -33,5 +33,7 @@
     stateVersion = "24.11";
   };
 
+  fonts.fontconfig.enable = true;
+
   programs.home-manager.enable = true;
 }
