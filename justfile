@@ -2,9 +2,9 @@ import 'repo-setup/justfile'
 
 username := "dima"
 
-# Apply Home Manager configuration for the current system
+# Apply Home Manager configuration for the current system (backs up conflicting files)
 apply:
-    nix run .#apply
+    nix run github:nix-community/home-manager -- switch --flake ".#dima@$(nix eval --raw --impure --expr builtins.currentSystem)" -b backup
 
 # Update all flake inputs
 nix-update:
