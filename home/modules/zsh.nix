@@ -11,7 +11,6 @@ _: {
     };
     oh-my-zsh = {
       enable = true;
-      theme = "miloshadzic";
     };
     initContent = ''
       source <(just --completions zsh)

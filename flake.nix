@@ -11,10 +11,20 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, flake-utils, self }:
+    {
+      nixpkgs,
+      home-manager,
+      flake-utils,
+      self,
+    }:
     let
       username = "dima";
-      systems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
       mkHome =
         system:
         home-manager.lib.homeManagerConfiguration {
@@ -31,7 +41,8 @@
         }) systems
       );
     }
-    // flake-utils.lib.eachSystem systems (system:
+    // flake-utils.lib.eachSystem systems (
+      system:
       let
         hmConfig = self.homeConfigurations."${username}@${system}";
       in

@@ -1,4 +1,9 @@
-{ username, pkgs, lib, ... }:
+{
+  username,
+  pkgs,
+  lib,
+  ...
+}:
 {
   imports = [
     ./modules/alacritty.nix
@@ -9,12 +14,15 @@
     ./modules/packages-darwin.nix
     ./modules/ripgrep.nix
     ./modules/zellij.nix
+    ./modules/starship.nix
     ./modules/zsh.nix
   ];
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "claude-code"
-  ];
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      "claude-code"
+    ];
 
   home = {
     inherit username;
