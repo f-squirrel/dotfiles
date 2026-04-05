@@ -1,4 +1,4 @@
-_: {
+{ pkgs, ... }: {
   programs.zellij.enable = true;
 
   xdg.configFile = {
@@ -6,10 +6,7 @@ _: {
     "zellij/layouts/default.kdl".source = ./zellij/layouts/default.kdl;
   };
 
-  home.file = {
-    ".local/bin/vscode-open.sh" = {
-      source = ../../scripts/utils/vscode-open.sh;
-      executable = true;
-    };
-  };
+  home.packages = [
+    (pkgs.writeShellScriptBin "vscode-open" (builtins.readFile ../../scripts/utils/vscode-open.sh))
+  ];
 }
