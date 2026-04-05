@@ -11,6 +11,7 @@ _: {
     };
     oh-my-zsh = {
       enable = true;
+      theme = "";
     };
     initContent = ''
       [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
