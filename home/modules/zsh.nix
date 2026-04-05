@@ -13,6 +13,7 @@ _: {
       enable = true;
     };
     initContent = ''
+      [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
       source <(just --completions zsh)
       export PIP_REQUIRE_VIRTUALENV=true
     '';
