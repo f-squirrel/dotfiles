@@ -2,7 +2,7 @@ _: {
   programs.starship = {
     enable = true;
     settings = {
-      add_newline = false;
+      add_newline = true;
     };
   };
 }
