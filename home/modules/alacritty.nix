@@ -16,16 +16,16 @@ in
       font = {
         size = 12.0;
         normal = {
-          family = "FiraCode Nerd Font Mono";
+          family = "JetBrainsMono Nerd Font";
           style = "Regular";
         };
         bold = {
-          family = "FiraCode Nerd Font Mono";
+          family = "JetBrainsMono Nerd Font";
           style = "Bold";
         };
         italic = {
-          family = "FiraCode Nerd Font Mono";
-          style = "Light";
+          family = "JetBrainsMono Nerd Font";
+          style = "Italic";
         };
       };
 
