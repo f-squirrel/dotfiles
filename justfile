@@ -7,6 +7,10 @@ system := `nix eval --raw --impure --expr builtins.currentSystem`
 apply:
     nix run github:nix-community/home-manager -- switch --flake ".#{{username}}@{{system}}" -b backup
 
+# Set up GPU drivers for Nix on non-NixOS Linux (run after apply if GPU-accelerated apps break)
+gpu-setup:
+    sudo $(find /nix/store -maxdepth 3 -name "non-nixos-gpu-setup" 2>/dev/null | head -1)
+
 # Show Home Manager news for the current system
 news:
     home-manager news --flake ".#{{username}}@{{system}}"
