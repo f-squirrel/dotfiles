@@ -7,6 +7,7 @@
     glow
     jq
     just
+    gnumake
     wget
     btop
     keepassxc
