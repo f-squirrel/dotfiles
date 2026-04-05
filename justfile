@@ -4,7 +4,11 @@ username := "dima"
 
 # Apply Home Manager configuration for the current system (backs up conflicting files)
 apply:
-    nix run github:nix-community/home-manager -- switch --flake ".#dima@$(nix eval --raw --impure --expr builtins.currentSystem)" -b backup
+    nix run github:nix-community/home-manager -- switch --flake ".#{{username}}@$(nix eval --raw --impure --expr builtins.currentSystem)" -b backup
+
+# Show Home Manager news for the current system
+news:
+    home-manager news --flake ".#{{username}}@$(nix eval --raw --impure --expr builtins.currentSystem)"
 
 # Update all flake inputs
 nix-update:
