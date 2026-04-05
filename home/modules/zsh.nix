@@ -28,6 +28,9 @@ _: {
         fi
       }
       precmd_functions+=(_starship_newline_precmd)
+
+      # Let atuin own ctrl+r instead of fzf
+      bindkey '^R' atuin-search
     '';
   };
 }

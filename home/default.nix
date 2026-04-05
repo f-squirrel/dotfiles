@@ -16,6 +16,7 @@
     ./modules/ripgrep.nix
     ./modules/zellij.nix
     ./modules/starship.nix
+    ./modules/atuin.nix
     ./modules/zsh.nix
   ];
 
