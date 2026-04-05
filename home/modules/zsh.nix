@@ -31,6 +31,8 @@ _: {
 
       # Let atuin own ctrl+r instead of fzf
       bindkey '^R' atuin-search
+      # Remove zsh's fwd-i-search so ctrl+s works inside atuin
+      bindkey -r '^S'
     '';
   };
 }
