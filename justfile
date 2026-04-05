@@ -1,14 +1,15 @@
 import 'repo-setup/justfile'
 
 username := "dima"
+system := `nix eval --raw --impure --expr builtins.currentSystem`
 
 # Apply Home Manager configuration for the current system (backs up conflicting files)
 apply:
-    nix run github:nix-community/home-manager -- switch --flake ".#{{username}}@$(nix eval --raw --impure --expr builtins.currentSystem)" -b backup
+    nix run github:nix-community/home-manager -- switch --flake ".#{{username}}@{{system}}" -b backup
 
 # Show Home Manager news for the current system
 news:
-    home-manager news --flake ".#{{username}}@$(nix eval --raw --impure --expr builtins.currentSystem)"
+    home-manager news --flake ".#{{username}}@{{system}}"
 
 # Update all flake inputs
 nix-update:
@@ -20,7 +21,7 @@ nix-check:
 
 # Build Home Manager configuration for the current system without applying
 nix-build:
-    nix build ".#packages.$(nix eval --raw --impure --expr builtins.currentSystem).activation"
+    nix build ".#packages.{{system}}.activation"
 
 # Run a nix-shell with the Home Manager configuration for the current system
 nix-shell:
