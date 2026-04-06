@@ -15,7 +15,7 @@
     python3
     python3Packages.ipython
     python3Packages.virtualenv
-    du-dust
+    dust
     shellcheck
     tokei
     vale
