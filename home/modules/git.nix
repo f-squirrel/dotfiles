@@ -26,7 +26,7 @@
       };
       difftool."default-difftool".cmd = "code --wait --diff $LOCAL $REMOTE";
       alias = {
-        lgc = "!git glol | sed '$a\\\\' | grep '* ' | tac | cat -n | sed 's/^[ \\t]*//' | sed 's/[\\t]*[\\\\*]//' | tac | less";
+        lgc = "!git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' | sed '$a\\\\' | grep '* ' | tac | cat -n | sed 's/^[ \\t]*//' | sed 's/[\\t]*[\\\\*]//' | tac | less";
       };
     };
   };
