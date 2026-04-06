@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   imports = [
     ./minimal.nix
@@ -6,4 +7,6 @@
     ../modules/packages-gui.nix
     ../modules/rust.nix
   ];
+
+  home.packages = [ pkgs.claude-code ];
 }
