@@ -18,6 +18,7 @@
     ./modules/zellij.nix
     ./modules/starship.nix
     ./modules/atuin.nix
+    ./modules/zoxide.nix
     ./modules/zsh.nix
   ];
 
