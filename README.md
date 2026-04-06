@@ -5,25 +5,60 @@ managed with [Home Manager](https://github.com/nix-community/home-manager).
 
 ## Bootstrap
 
-Install Nix (daemon/multi-user mode):
+No dependencies beyond `curl` and `sh` — Nix is fetched by the installer,
+and the dotfiles are fetched directly from GitHub by Nix (no `git` required).
+
+Run the setup script directly:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/f-squirrel/dotfiles/main/setup.sh | sh
+```
+
+Or, if you already have the repo cloned:
 
 ```sh
 sh setup.sh
 ```
 
-That's it — Nix is installed, flakes are enabled, and Home Manager
-configuration is applied in one step.
+This installs Nix in daemon (multi-user) mode, enables flakes, and applies
+the Home Manager configuration in one step. Conflicting files are backed up
+with a `.backup` suffix.
+
+### GPU setup (non-NixOS Linux only)
+
+If GPU-accelerated apps break after the first apply, run:
+
+```sh
+just gpu-setup
+```
 
 ## Structure
 
 ```text
-flake.nix           # Flake inputs and homeConfigurations outputs
+flake.nix                        # Flake inputs and homeConfigurations outputs
+setup.sh                         # Bootstrap script (installs Nix + applies config)
 home/
-  default.nix       # Top-level Home Manager config
+  default.nix                    # Top-level Home Manager config
   modules/
-    git.nix         # Git configuration
-    packages.nix    # Common CLI packages
-    zsh.nix         # Zsh shell configuration
+    alacritty.nix                # Alacritty terminal emulator
+    atuin.nix                    # Shell history with Atuin
+    btop.nix                     # System monitor
+    eza.nix                      # Modern ls replacement
+    fzf.nix                      # Fuzzy finder
+    git.nix                      # Git configuration
+    neovim.nix                   # Neovim editor
+    packages.nix                 # Common CLI packages
+    packages-darwin.nix          # macOS-specific packages
+    ripgrep.nix                  # Fast grep replacement
+    rust.nix                     # Rust toolchain
+    starship.nix                 # Shell prompt
+    zellij.nix                   # Terminal multiplexer
+    zellij/                      # Zellij config and layouts
+    zoxide.nix                   # Smarter cd
+    zsh.nix                      # Zsh shell configuration
+scripts/
+  utils/
+    vscode-open.sh               # Helper for opening files in VS Code
 ```
 
 ## Repository tooling
@@ -44,7 +79,13 @@ just init
 | Target             | Description                                                  |
 |--------------------|--------------------------------------------------------------|
 | `just apply`       | Apply Home Manager configuration for the current system      |
-| `just update`      | Update all flake inputs                                      |
+| `just nix-update`  | Update all flake inputs                                      |
+| `just nix-check`   | Validate flake structure                                     |
+| `just nix-build`   | Build configuration without applying                         |
+| `just nix-shell`   | Open a shell with the built home-path                        |
+| `just gpu-setup`   | Set up GPU drivers (non-NixOS Linux, run after apply)        |
+| `just news`        | Show Home Manager news for the current system                |
+| `just docker-test` | Build and run a Docker container to test config from scratch |
 | `just init`        | Symlink linter configs from the submodule into the repo root |
 | `just lint`        | Run all linters                                              |
 | `just commit-lint` | Validate commits against Conventional Commits specification  |
@@ -59,4 +100,4 @@ Docker and just.
 
 Commits must follow the
 [Conventional Commits](https://www.conventionalcommits.org) specification.
-Config is in `commitlint.config.js`.
+Config is in `.commitlintrc.yml`.
