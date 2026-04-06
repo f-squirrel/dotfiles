@@ -379,7 +379,9 @@ keybinds clear-defaults=true {
             }
         }
         bind "Alt d" {
-            Run "sh" "-c" "sleep 0.1 && git diff" {
+            // sleep gives zellij time to resize the PTY before git queries terminal dimensions;
+            // without it, delta renders at the default small size
+            Run "sh" "-c" "sleep 0.05 && git diff" {
                 floating true
                 close_on_exit true
                 width "100%"
@@ -387,7 +389,9 @@ keybinds clear-defaults=true {
             }
         }
         bind "Alt s" {
-            Run "sh" "-c" "sleep 0.1 && git show" {
+            // sleep gives zellij time to resize the PTY before git queries terminal dimensions;
+            // without it, delta renders at the default small size
+            Run "sh" "-c" "sleep 0.05 && git show" {
                 floating true
                 close_on_exit true
                 width "100%"
