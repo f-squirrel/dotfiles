@@ -20,5 +20,6 @@
     vale
     claude-code
     devcontainer
+    duf
   ];
 }
