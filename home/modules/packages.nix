@@ -9,7 +9,6 @@
     just
     gnumake
     wget
-    btop
     keepassxc
     neovim
     python3

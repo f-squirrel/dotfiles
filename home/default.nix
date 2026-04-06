@@ -7,6 +7,7 @@
 {
   imports = [
     ./modules/alacritty.nix
+    ./modules/btop.nix
     ./modules/rust.nix
     ./modules/eza.nix
     ./modules/fzf.nix
