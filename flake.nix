@@ -24,6 +24,10 @@
     }:
     let
       username = "dima";
+      profileNames = [
+        "full"
+        "minimal"
+      ];
       systems = [
         "x86_64-linux"
         "aarch64-linux"
@@ -31,39 +35,36 @@
         "aarch64-darwin"
       ];
       mkHome =
-        system: profile:
+        system: profileName:
         home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
             inherit system;
             overlays = [ rust-overlay.overlays.default ];
           };
-          modules = [ profile ];
+          modules = [ (./home/profiles + "/${profileName}.nix") ];
           extraSpecialArgs = { inherit username; };
         };
-      profiles = {
-        "${username}-full" = ./home/profiles/full.nix;
-        "${username}-minimal" = ./home/default.nix;
-      };
     in
     {
       homeConfigurations = builtins.listToAttrs (
         builtins.concatMap (
           system:
-          builtins.attrValues (
-            builtins.mapAttrs (name: profile: {
-              name = "${name}@${system}";
-              value = mkHome system profile;
-            }) profiles
-          )
+          map (profile: {
+            name = "${username}-${profile}@${system}";
+            value = mkHome system profile;
+          }) profileNames
         ) systems
       );
     }
     // flake-utils.lib.eachSystem systems (
       system:
       {
-        packages = builtins.mapAttrs (
-          name: _: self.homeConfigurations."${name}@${system}".activationPackage
-        ) profiles;
+        packages = builtins.listToAttrs (
+          map (profile: {
+            name = "${username}-${profile}";
+            value = self.homeConfigurations."${username}-${profile}@${system}".activationPackage;
+          }) profileNames
+        );
         apps = {
           apply = {
             type = "app";
