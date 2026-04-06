@@ -411,8 +411,8 @@ keybinds clear-defaults=true {
             Run "vscode-open" {
                 floating true
                 close_on_exit true
-                width "30%"
-                height "15%"
+                // width "30%"
+                // height "15%"
                 name "vscode"
             }
         }
