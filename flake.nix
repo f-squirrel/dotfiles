@@ -40,7 +40,6 @@
           pkgs = import nixpkgs {
             inherit system;
             overlays = [ rust-overlay.overlays.default ];
-            config.allowUnfree = true;
           };
           modules = [ (./home/profiles + "/${profileName}.nix") ];
           extraSpecialArgs = { inherit username; };
