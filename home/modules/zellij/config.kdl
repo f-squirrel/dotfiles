@@ -386,6 +386,7 @@ keybinds clear-defaults=true {
                 close_on_exit true
                 width "100%"
                 height "100%"
+                name "git diff"
             }
         }
         bind "Alt s" {
@@ -396,6 +397,7 @@ keybinds clear-defaults=true {
                 close_on_exit true
                 width "100%"
                 height "100%"
+                name "git show"
             }
         }
         bind "Alt c" {
