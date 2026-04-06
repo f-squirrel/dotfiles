@@ -20,17 +20,9 @@ Or, if you already have the repo cloned:
 sh setup.sh
 ```
 
-This installs Nix in daemon (multi-user) mode, enables flakes, and applies
-the Home Manager configuration in one step. Conflicting files are backed up
-with a `.backup` suffix.
-
-### GPU setup (non-NixOS Linux only)
-
-If GPU-accelerated apps break after the first apply, run:
-
-```sh
-just gpu-setup
-```
+This installs Nix in daemon (multi-user) mode, enables flakes, applies
+the Home Manager configuration, and sets up GPU drivers on non-NixOS Linux —
+all in one step. Conflicting files are backed up with a `.backup` suffix.
 
 ## Structure
 
