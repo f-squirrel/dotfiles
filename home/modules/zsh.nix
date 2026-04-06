@@ -12,6 +12,7 @@ _: {
     oh-my-zsh = {
       enable = true;
       theme = "";
+      plugins = [ "git" ];
     };
     initContent = ''
       [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
