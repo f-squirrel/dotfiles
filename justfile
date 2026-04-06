@@ -1,9 +1,10 @@
 import 'repo-setup/justfile'
 
 username := "dima"
-system   := `nix eval --raw --impure --expr builtins.currentSystem`
+system := `nix eval --raw --impure --expr builtins.currentSystem`
 
 # Apply Home Manager configuration for the current system (backs up conflicting files)
+
 # profile: full or minimal
 apply profile:
     nix run github:nix-community/home-manager -- switch --flake ".#{{ username }}-{{ profile }}@{{ system }}" -b backup
@@ -13,6 +14,7 @@ gpu-setup:
     sudo $(find /nix/store -maxdepth 3 -name "non-nixos-gpu-setup" 2>/dev/null | head -1)
 
 # Show Home Manager news for the current system
+
 # profile: full or minimal
 news profile:
     home-manager news --flake ".#{{ username }}-{{ profile }}@{{ system }}"
@@ -26,6 +28,7 @@ nix-check:
     nix flake check
 
 # Build Home Manager configuration for the current system without applying
+
 # profile: full or minimal
 nix-build profile:
     nix build ".#packages.{{ system }}.{{ username }}-{{ profile }}"

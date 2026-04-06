@@ -56,22 +56,19 @@
         ) systems
       );
     }
-    // flake-utils.lib.eachSystem systems (
-      system:
-      {
-        packages = builtins.listToAttrs (
-          map (profile: {
-            name = "${username}-${profile}";
-            value = self.homeConfigurations."${username}-${profile}@${system}".activationPackage;
-          }) profileNames
-        );
-        apps = {
-          apply = {
-            type = "app";
-            program = "${self.homeConfigurations."${username}-full@${system}".activationPackage}/activate";
-          };
+    // flake-utils.lib.eachSystem systems (system: {
+      packages = builtins.listToAttrs (
+        map (profile: {
+          name = "${username}-${profile}";
+          value = self.homeConfigurations."${username}-${profile}@${system}".activationPackage;
+        }) profileNames
+      );
+      apps = {
+        apply = {
+          type = "app";
+          program = "${self.homeConfigurations."${username}-full@${system}".activationPackage}/activate";
         };
-        defaultApp = self.apps.${system}.apply;
-      }
-    );
+      };
+      defaultApp = self.apps.${system}.apply;
+    });
 }
