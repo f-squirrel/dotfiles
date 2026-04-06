@@ -373,7 +373,7 @@ keybinds clear-defaults=true {
             }
         }
         bind "Alt g" {
-            Run "git" "lgc" {
+            Run "glo" {
                 floating true
                 close_on_exit true
             }
