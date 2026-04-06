@@ -10,6 +10,7 @@
     gnumake
     jq
     just
+    openconnect
     shellcheck
     tokei
     vale
