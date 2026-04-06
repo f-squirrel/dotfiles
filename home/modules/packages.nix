@@ -16,6 +16,7 @@
     python3Packages.ipython
     python3Packages.virtualenv
     shellcheck
+    tokei
     vale
     claude-code
     devcontainer
