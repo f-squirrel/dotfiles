@@ -6,19 +6,17 @@
 }:
 {
   imports = [
-    ./modules/alacritty.nix
+    ./modules/atuin.nix
     ./modules/btop.nix
-    ./modules/rust.nix
     ./modules/eza.nix
     ./modules/fzf.nix
     ./modules/git.nix
     ./modules/neovim.nix
-    ./modules/packages.nix
+    ./modules/packages-cli.nix
     ./modules/packages-darwin.nix
     ./modules/ripgrep.nix
-    ./modules/zellij.nix
     ./modules/starship.nix
-    ./modules/atuin.nix
+    ./modules/zellij.nix
     ./modules/zoxide.nix
     ./modules/zsh.nix
   ];
@@ -36,7 +34,6 @@
     # Do not change this when upgrading Home Manager.
     # See https://home-manager.nix.community/options.html#opt-home.stateVersion
     stateVersion = "24.11";
-
   };
 
   fonts.fontconfig.enable = true;

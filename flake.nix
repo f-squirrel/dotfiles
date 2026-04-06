@@ -31,37 +31,43 @@
         "aarch64-darwin"
       ];
       mkHome =
-        system:
+        system: profile:
         home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
             inherit system;
             overlays = [ rust-overlay.overlays.default ];
           };
-          modules = [ ./home/default.nix ];
+          modules = [ profile ];
           extraSpecialArgs = { inherit username; };
         };
+      profiles = {
+        "${username}" = ./home/profiles/full.nix;
+        "${username}-minimal" = ./home/profiles/minimal.nix;
+      };
     in
     {
       homeConfigurations = builtins.listToAttrs (
-        map (system: {
-          name = "${username}@${system}";
-          value = mkHome system;
-        }) systems
+        builtins.concatMap (
+          system:
+          builtins.attrValues (
+            builtins.mapAttrs (name: profile: {
+              name = "${name}@${system}";
+              value = mkHome system profile;
+            }) profiles
+          )
+        ) systems
       );
     }
     // flake-utils.lib.eachSystem systems (
       system:
-      let
-        hmConfig = self.homeConfigurations."${username}@${system}";
-      in
       {
-        packages = {
-          activation = hmConfig.activationPackage;
-        };
+        packages = builtins.mapAttrs (
+          name: _: self.homeConfigurations."${name}@${system}".activationPackage
+        ) profiles;
         apps = {
           apply = {
             type = "app";
-            program = "${hmConfig.activationPackage}/activate";
+            program = "${self.homeConfigurations."${username}@${system}".activationPackage}/activate";
           };
         };
         defaultApp = self.apps.${system}.apply;
