@@ -373,9 +373,10 @@ keybinds clear-defaults=true {
             }
         }
         bind "Alt g" {
-            Run "glo" {
+            Run "sh" "-c" "git log --oneline --decorate --graph" {
                 floating true
                 close_on_exit true
+                name "git log"
             }
         }
         bind "Alt d" {
