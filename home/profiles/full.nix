@@ -1,6 +1,6 @@
 {
   imports = [
-    ./minimal.nix
+    ../default.nix
     ../modules/alacritty.nix
     ../modules/packages-cpp.nix
     ../modules/packages-gui.nix

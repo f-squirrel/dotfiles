@@ -42,7 +42,7 @@
         };
       profiles = {
         "${username}" = ./home/profiles/full.nix;
-        "${username}-minimal" = ./home/profiles/minimal.nix;
+        "${username}-minimal" = ./home/default.nix;
       };
     in
     {
