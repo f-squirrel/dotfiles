@@ -25,18 +25,6 @@
         tool = "default-difftool";
       };
       difftool."default-difftool".cmd = "code --wait --diff $LOCAL $REMOTE";
-      alias = {
-        lg = "log --color --graph --pretty=format:'%C(yellow)%h%Creset -%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
-        lol = "log --graph --decorate --pretty=oneline --abbrev-commit --format=format:'%C(yellow)%h%C(reset)%d%C(reset) %s%C(reset) %C(green)(%ar)%C(reset) %C(bold blue)<%an>%C(reset)'";
-        lola = "!git lol --all";
-        lgc = "!git lg | sed '$a\\\\' | grep '* ' | tac | cat -n | sed 's/^[ \\t]*//' | sed 's/[\\t]*[\\\\*]//' | tac | less";
-        st = "status";
-        patch = "am --signoff --ignore-space-change --ignore-whitespace";
-        info = "rev-list HEAD --count";
-        up = "!STASHED=$( git stash | wc -l ) && git pull --rebase && test $STASHED -gt 1 && git stash pop || true";
-        ls = "ls-files";
-        unstage = "reset HEAD";
-      };
     };
   };
 
