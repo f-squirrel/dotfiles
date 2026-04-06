@@ -40,6 +40,9 @@
           pkgs = import nixpkgs {
             inherit system;
             overlays = [ rust-overlay.overlays.default ];
+            config.allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [
+              "dropbox"
+            ];
           };
           modules = [ (./home/profiles + "/${profileName}.nix") ];
           extraSpecialArgs = { inherit username; };
