@@ -1,16 +1,10 @@
 {
   username,
   pkgs,
-  lib,
   ...
 }:
 {
-  nixpkgs.config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (lib.getName pkg) [
-      "claude-code"
-      "dropbox"
-    ];
+  nixpkgs.config.allowUnfree = true;
 
   home = {
     inherit username;
