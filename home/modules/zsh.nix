@@ -1,11 +1,6 @@
 _: {
   programs.zsh = {
     enable = true;
-    sessionVariables = {
-      EDITOR = "nvim";
-      VISUAL = "nvim";
-      PIP_REQUIRE_VIRTUALENV = "true";
-    };
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     history = {
@@ -22,6 +17,9 @@ _: {
     initContent = ''
       [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
       source <(just --completions zsh)
+      export EDITOR="nvim"
+      export VISUAL="nvim"
+      export PIP_REQUIRE_VIRTUALENV="true"
 
       # Print a blank line before each prompt except the first one in a session
       _first_prompt=1
