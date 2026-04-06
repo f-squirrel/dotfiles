@@ -40,4 +40,4 @@ jobs:
 
       - run: just nix-check
 
-      - run: just nix-build
+      - run: just nix-build full
