@@ -25,6 +25,9 @@
         tool = "default-difftool";
       };
       difftool."default-difftool".cmd = "code --wait --diff $LOCAL $REMOTE";
+      alias = {
+        lgc = "!git glol | sed '$a\\\\' | grep '* ' | tac | cat -n | sed 's/^[ \\t]*//' | sed 's/[\\t]*[\\\\*]//' | tac | less";
+      };
     };
   };
 
