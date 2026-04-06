@@ -17,7 +17,7 @@ system="${arch}-${os}"
 
 # Apply Home Manager configuration directly from GitHub (no git clone needed)
 # Nix fetches the flake; git will be installed as part of the configuration
-nix run github:nix-community/home-manager -- switch --flake "github:f-squirrel/dotfiles#dima@${system}" -b backup
+nix run github:nix-community/home-manager -- switch --flake "github:f-squirrel/dotfiles#dima-full@${system}" -b backup
 
 # Set up GPU drivers if running on non-NixOS Linux (script absent on NixOS/macOS)
 gpu_setup=$(find /nix/store -maxdepth 3 -name "non-nixos-gpu-setup" 2>/dev/null | head -1)

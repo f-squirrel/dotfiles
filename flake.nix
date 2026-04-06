@@ -41,7 +41,7 @@
           extraSpecialArgs = { inherit username; };
         };
       profiles = {
-        "${username}" = ./home/profiles/full.nix;
+        "${username}-full" = ./home/profiles/full.nix;
         "${username}-minimal" = ./home/default.nix;
       };
     in
@@ -67,7 +67,7 @@
         apps = {
           apply = {
             type = "app";
-            program = "${self.homeConfigurations."${username}@${system}".activationPackage}/activate";
+            program = "${self.homeConfigurations."${username}-full@${system}".activationPackage}/activate";
           };
         };
         defaultApp = self.apps.${system}.apply;

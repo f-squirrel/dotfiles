@@ -1,21 +1,21 @@
 import 'repo-setup/justfile'
 
 username := "dima"
-profile  := username
 system   := `nix eval --raw --impure --expr builtins.currentSystem`
 
 # Apply Home Manager configuration for the current system (backs up conflicting files)
-# Use `just profile=dima-minimal apply` to apply a different profile
-apply:
-    nix run github:nix-community/home-manager -- switch --flake ".#{{ profile }}@{{ system }}" -b backup
+# profile: full or minimal
+apply profile:
+    nix run github:nix-community/home-manager -- switch --flake ".#{{ username }}-{{ profile }}@{{ system }}" -b backup
 
 # Set up GPU drivers for Nix on non-NixOS Linux (run after apply if GPU-accelerated apps break)
 gpu-setup:
     sudo $(find /nix/store -maxdepth 3 -name "non-nixos-gpu-setup" 2>/dev/null | head -1)
 
 # Show Home Manager news for the current system
-news:
-    home-manager news --flake ".#{{ profile }}@{{ system }}"
+# profile: full or minimal
+news profile:
+    home-manager news --flake ".#{{ username }}-{{ profile }}@{{ system }}"
 
 # Update all flake inputs
 nix-update:
@@ -26,8 +26,9 @@ nix-check:
     nix flake check
 
 # Build Home Manager configuration for the current system without applying
-nix-build:
-    nix build ".#packages.{{ system }}.{{ profile }}"
+# profile: full or minimal
+nix-build profile:
+    nix build ".#packages.{{ system }}.{{ username }}-{{ profile }}"
 
 # Run a nix-shell with the Home Manager configuration for the current system
 nix-shell:
