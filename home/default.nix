@@ -33,6 +33,12 @@
     # Do not change this when upgrading Home Manager.
     # See https://home-manager.nix.community/options.html#opt-home.stateVersion
     stateVersion = "24.11";
+
+    sessionVariables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+      PIP_REQUIRE_VIRTUALENV = "true";
+    };
   };
 
   fonts.fontconfig.enable = true;

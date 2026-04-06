@@ -17,7 +17,6 @@ _: {
     initContent = ''
       [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
       source <(just --completions zsh)
-      export PIP_REQUIRE_VIRTUALENV=true
 
       # Print a blank line before each prompt except the first one in a session
       _first_prompt=1
