@@ -1,6 +1,11 @@
 _: {
   programs.zsh = {
     enable = true;
+    sessionVariables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+      PIP_REQUIRE_VIRTUALENV = "true";
+    };
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     history = {
