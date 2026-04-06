@@ -2,7 +2,10 @@
 {
   home.packages = with pkgs; [
     brave
+    clang
+    clang-tools
     claude-code
+    cmake
     curl
     devcontainer
     duf
