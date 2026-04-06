@@ -13,6 +13,7 @@
     fd
     glow
     gnumake
+    ninja
     jq
     just
     keepassxc
