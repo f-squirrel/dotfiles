@@ -1,7 +1,6 @@
 {
   imports = [
     ../modules/base.nix
-    ../modules/alacritty.nix
     ../modules/atuin.nix
     ../modules/btop.nix
     ../modules/eza.nix
@@ -10,7 +9,6 @@
     ../modules/neovim.nix
     ../modules/packages-cli.nix
     ../modules/packages-darwin.nix
-    ../modules/packages-python.nix
     ../modules/ripgrep.nix
     ../modules/starship.nix
     ../modules/zellij.nix
