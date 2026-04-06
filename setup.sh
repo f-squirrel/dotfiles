@@ -15,5 +15,6 @@ os=$(uname -s | tr '[:upper:]' '[:lower:]')
 [ "$arch" = "arm64" ] && arch="aarch64"
 system="${arch}-${os}"
 
-# Apply Home Manager configuration
-nix run github:nix-community/home-manager -- switch --flake ".#dima@${system}"
+# Apply Home Manager configuration directly from GitHub (no git clone needed)
+# Nix fetches the flake; git will be installed as part of the configuration
+nix run github:nix-community/home-manager -- switch --flake "github:f-squirrel/dotfiles#dima@${system}" -b backup
