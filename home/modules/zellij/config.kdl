@@ -379,23 +379,19 @@ keybinds clear-defaults=true {
             }
         }
         bind "Alt d" {
-            Run "git" "diff" {
+            Run "sh" "-c" "sleep 0.1 && git diff" {
                 floating true
                 close_on_exit true
                 width "100%"
                 height "100%"
-                x "0"
-                y "0"
             }
         }
         bind "Alt s" {
-            Run "git" "show" {
+            Run "sh" "-c" "sleep 0.1 && git show" {
                 floating true
                 close_on_exit true
                 width "100%"
                 height "100%"
-                x "0"
-                y "0"
             }
         }
         bind "Alt c" {
