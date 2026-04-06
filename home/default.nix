@@ -12,6 +12,7 @@
     ./modules/eza.nix
     ./modules/fzf.nix
     ./modules/git.nix
+    ./modules/neovim.nix
     ./modules/packages.nix
     ./modules/packages-darwin.nix
     ./modules/ripgrep.nix
