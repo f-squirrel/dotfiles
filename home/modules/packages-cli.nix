@@ -14,7 +14,4 @@
       shellcheck
       wget
     ]
-    ++ lib.optionals pkgs.stdenv.isLinux [
-      xsel
-    ];
 }

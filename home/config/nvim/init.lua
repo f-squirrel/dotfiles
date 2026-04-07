@@ -93,24 +93,8 @@ vim.g.maplocalleader = ","
 -- Sync clipboard between OS and Neovim (applies to both standalone and VSCode).
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  See `:help 'clipboard'`
---  On Linux, explicitly use xsel to avoid xclip flashing a window on every yank.
 vim.schedule(function()
-	if vim.fn.has("linux") == 1 then
-		vim.g.clipboard = {
-			name = "xsel",
-			copy = {
-				["+"] = { "xsel", "--nodetach", "-i", "-b" },
-				["*"] = { "xsel", "--nodetach", "-i", "-p" },
-			},
-			paste = {
-				["+"] = { "xsel", "-o", "-b" },
-				["*"] = { "xsel", "-o", "-p" },
-			},
-			cache_enabled = 1,
-		}
-	else
-		vim.o.clipboard = "unnamedplus"
-	end
+	vim.o.clipboard = "unnamedplus"
 end)
 
 -- Highlight when yanking (copying) text
