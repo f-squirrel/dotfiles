@@ -9,10 +9,8 @@
   xdg.configFile."nvim/init.lua".source = ../config/nvim/init.lua;
 
   # Build-time deps for lazy.nvim plugins:
-  #   telescope-fzf-native  → needs make + gcc
-  #   LuaSnip               → needs make (jsregexp build step)
+  #   telescope-fzf-native + LuaSnip → need make (C compiler comes from stdenv or clang)
   home.packages = with pkgs; [
-    gcc
     gnumake
   ];
 
