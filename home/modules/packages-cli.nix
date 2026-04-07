@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   home.packages = with pkgs; [
     curl
@@ -15,5 +15,7 @@
     tokei
     vale
     wget
+  ] ++ lib.optionals pkgs.stdenv.isLinux [
+    xsel
   ];
 }
