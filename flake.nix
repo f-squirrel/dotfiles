@@ -66,12 +66,17 @@
           value = self.homeConfigurations."${username}-${profile}@${system}".activationPackage;
         }) profileNames
       );
-      apps = {
-        apply = {
-          type = "app";
-          program = "${self.homeConfigurations."${username}-full@${system}".activationPackage}/activate";
+      apps =
+        let
+          applyApp = {
+            type = "app";
+            meta.description = "Apply the full Home Manager configuration";
+            program = "${self.homeConfigurations."${username}-full@${system}".activationPackage}/activate";
+          };
+        in
+        {
+          apply = applyApp;
+          default = applyApp;
         };
-      };
-      defaultApp = self.apps.${system}.apply;
     });
 }
