@@ -90,6 +90,13 @@ P.S. You can delete this when you're done too. It's your config now! :)
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
+-- Sync clipboard between OS and Neovim (applies to both standalone and VSCode).
+--  Schedule the setting after `UiEnter` because it can increase startup-time.
+--  See `:help 'clipboard'`
+vim.schedule(function()
+	vim.o.clipboard = "unnamedplus"
+end)
+
 -- [[ VSCode-specific config ]]
 -- When running inside VSCode (via vscode-neovim extension), delegate UI actions
 -- to VSCode commands and skip plugin setup entirely.
@@ -169,14 +176,6 @@ vim.o.mouse = "a"
 
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = false
-
--- Sync clipboard between OS and Neovim.
---  Schedule the setting after `UiEnter` because it can increase startup-time.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.schedule(function()
-	vim.o.clipboard = "unnamedplus"
-end)
 
 -- Enable break indent
 vim.o.breakindent = true
