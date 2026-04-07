@@ -544,7 +544,7 @@ require('lazy').setup({
         opts = {},
       },
       -- Maps LSP server names between nvim-lspconfig and Mason package names.
-      'mason-org/mason-lspconfig.nvim',
+      { 'mason-org/mason-lspconfig.nvim', opts = { automatic_enable = true } },
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- Useful status updates for LSP.
