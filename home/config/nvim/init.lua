@@ -113,6 +113,17 @@ vim.schedule(function()
 	end
 end)
 
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.hl.on_yank()`
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	callback = function()
+		vim.hl.on_yank()
+	end,
+})
+
 -- [[ VSCode-specific config ]]
 -- When running inside VSCode (via vscode-neovim extension), delegate UI actions
 -- to VSCode commands and skip plugin setup entirely.
@@ -309,17 +320,6 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
--- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
---  See `:help vim.hl.on_yank()`
-vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (copying) text",
-	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-	callback = function()
-		vim.hl.on_yank()
-	end,
-})
-
 vim.api.nvim_create_autocmd("FileType", {
 	desc = "Close gitsigns blame buffer with q or Esc",
 	group = vim.api.nvim_create_augroup("gitsigns-blame-close", { clear = true }),
@@ -364,8 +364,20 @@ require("lazy").setup({
 		"numToStr/Comment.nvim",
 		opts = {},
 		keys = {
-			{ "<C-/>", function() require("Comment.api").toggle.linewise.current() end, mode = "n", desc = "Toggle comment" },
-			{ "<C-/>", "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>", mode = "v", desc = "Toggle comment" },
+			{
+				"<C-/>",
+				function()
+					require("Comment.api").toggle.linewise.current()
+				end,
+				mode = "n",
+				desc = "Toggle comment",
+			},
+			{
+				"<C-/>",
+				"<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>",
+				mode = "v",
+				desc = "Toggle comment",
+			},
 		},
 	},
 
