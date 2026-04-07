@@ -6,6 +6,7 @@ _: {
       "--smart-case"
       "--with-filename"
       "--no-heading"
+      "--hidden"
     ];
   };
 }
