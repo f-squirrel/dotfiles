@@ -9,6 +9,11 @@ sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
 mkdir -p ~/.config/nix
 echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 
+# User identity (override via environment variables)
+username="${USERNAME:-dima}"
+git_name="${GIT_NAME:-f-squirrel}"
+git_email="${GIT_EMAIL:-dmitry.b.danilov@gmail.com}"
+
 # Detect current system
 arch=$(uname -m)
 os=$(uname -s | tr '[:upper:]' '[:lower:]')
@@ -17,7 +22,9 @@ system="${arch}-${os}"
 
 # Apply Home Manager configuration directly from GitHub (no git clone needed)
 # Nix fetches the flake; git will be installed as part of the configuration
-nix run github:nix-community/home-manager -- switch --flake "github:f-squirrel/dotfiles#dima-full@${system}" -b backup
+USERNAME="$username" GIT_NAME="$git_name" GIT_EMAIL="$git_email" \
+    nix run github:nix-community/home-manager -- switch --impure \
+    --flake "github:f-squirrel/dotfiles#${username}-full@${system}" -b backup
 
 # Set up GPU drivers if running on non-NixOS Linux (script absent on NixOS/macOS)
 gpu_setup=$(find /nix/store -maxdepth 3 -name "non-nixos-gpu-setup" 2>/dev/null | head -1)

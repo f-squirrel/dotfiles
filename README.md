@@ -24,6 +24,13 @@ This installs Nix in daemon (multi-user) mode, enables flakes, applies
 the Home Manager configuration, and sets up GPU drivers on non-NixOS Linux —
 all in one step. Conflicting files are backed up with a `.backup` suffix.
 
+User identity defaults to the repo owner's values but can be overridden via
+environment variables:
+
+```sh
+USERNAME=alice GIT_NAME="Alice Smith" GIT_EMAIL="alice@example.com" sh setup.sh
+```
+
 ## Structure
 
 ```text
