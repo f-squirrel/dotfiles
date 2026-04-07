@@ -360,6 +360,15 @@ require("lazy").setup({
 	-- NOTE: Plugins can be added via a link or github org/name. To run setup automatically, use `opts = {}`
 	{ "NMAC427/guess-indent.nvim", opts = {} },
 
+	{ -- Comment/uncomment lines with Ctrl+/ (like VSCode)
+		"numToStr/Comment.nvim",
+		opts = {},
+		keys = {
+			{ "<C-/>", function() require("Comment.api").toggle.linewise.current() end, mode = "n", desc = "Toggle comment" },
+			{ "<C-/>", "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>", mode = "v", desc = "Toggle comment" },
+		},
+	},
+
 	-- Alternatively, use `config = function() ... end` for full control over the configuration.
 	-- If you prefer to call `setup` explicitly, use:
 	--    {
