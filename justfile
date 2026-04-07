@@ -28,7 +28,7 @@ nix-update:
 
 # Validate flake structure
 nix-check:
-    nix flake check
+    {{ nix_user_env }} nix flake check --impure
 
 # Build Home Manager configuration for the current system without applying
 
