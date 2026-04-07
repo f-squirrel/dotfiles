@@ -1,13 +1,16 @@
 import 'repo-setup/justfile'
 
 username := "dima"
+git_name := "f-squirrel"
+git_email := "dmitry.b.danilov@gmail.com"
 system := `nix eval --raw --impure --expr builtins.currentSystem`
+nix_user_env := "USERNAME=" + username + " GIT_NAME=" + git_name + " GIT_EMAIL=" + git_email
 
 # Apply Home Manager configuration for the current system (backs up conflicting files)
 
 # profile: full or minimal
 apply profile:
-    nix run github:nix-community/home-manager -- switch --flake ".#{{ username }}-{{ profile }}@{{ system }}" -b backup
+    {{ nix_user_env }} nix run github:nix-community/home-manager -- switch --impure --flake ".#{{ username }}-{{ profile }}@{{ system }}" -b backup
 
 # Set up GPU drivers for Nix on non-NixOS Linux (run after apply if GPU-accelerated apps break)
 gpu-setup:
@@ -17,7 +20,7 @@ gpu-setup:
 
 # profile: full or minimal
 news profile:
-    home-manager news --flake ".#{{ username }}-{{ profile }}@{{ system }}"
+    {{ nix_user_env }} home-manager news --impure --flake ".#{{ username }}-{{ profile }}@{{ system }}"
 
 # Update all flake inputs
 nix-update:
@@ -31,7 +34,7 @@ nix-check:
 
 # profile: full or minimal
 nix-build profile:
-    nix build ".#packages.{{ system }}.{{ username }}-{{ profile }}"
+    {{ nix_user_env }} nix build --impure ".#packages.{{ system }}.{{ username }}-{{ profile }}"
 
 # Run a nix-shell with the Home Manager configuration for the current system
 nix-shell:

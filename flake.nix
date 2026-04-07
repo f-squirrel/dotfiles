@@ -23,7 +23,9 @@
       self,
     }:
     let
-      username = "dima";
+      username = builtins.getEnv "USERNAME";
+      gitName = builtins.getEnv "GIT_NAME";
+      gitEmail = builtins.getEnv "GIT_EMAIL";
       profileNames = [
         "full"
         "minimal"
@@ -42,7 +44,7 @@
             overlays = [ rust-overlay.overlays.default ];
           };
           modules = [ (./home/profiles + "/${profileName}.nix") ];
-          extraSpecialArgs = { inherit username; };
+          extraSpecialArgs = { inherit username gitName gitEmail; };
         };
     in
     {

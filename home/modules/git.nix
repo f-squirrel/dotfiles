@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  gitName,
+  gitEmail,
+  ...
+}:
 {
   programs.git = {
     enable = true;
@@ -6,8 +11,8 @@
 
     settings = {
       user = {
-        name = "f-squirrel";
-        email = "dmitry.b.danilov@gmail.com";
+        name = gitName;
+        email = gitEmail;
       };
       init.defaultBranch = "main";
       pull.rebase = true;
