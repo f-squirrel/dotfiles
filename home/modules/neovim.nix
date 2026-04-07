@@ -10,8 +10,10 @@
 
   # Build-time deps for lazy.nvim plugins:
   #   telescope-fzf-native + LuaSnip → need make (C compiler comes from stdenv or clang)
+  #   nvim-treesitter (main branch)   → needs tree-sitter CLI to compile parsers
   home.packages = with pkgs; [
     gnumake
+    tree-sitter
   ];
 
   home.shellAliases = {
