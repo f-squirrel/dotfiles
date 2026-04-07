@@ -52,6 +52,11 @@ nix-build profile:
 nix-shell:
     nix shell ./result/home-path
 
+# Install git hooks
+setup-hooks:
+    printf '#!/bin/sh\njust lint\n' > .git/hooks/pre-push
+    chmod +x .git/hooks/pre-push
+
 # Run all linters
 lint: nix-fmt nix-check nix-dead nix-lint lint-base
 
