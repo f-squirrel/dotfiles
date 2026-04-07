@@ -5,7 +5,7 @@
     viAlias = true;
     # Use extraLuaConfig so home-manager generates a single init.lua,
     # avoiding the init.vim vs init.lua conflict it would otherwise cause.
-    extraLuaConfig = builtins.readFile ../config/nvim/init.lua;
+    initLua = builtins.readFile ../config/nvim/init.lua;
   };
 
   # Build-time deps for lazy.nvim plugins:
