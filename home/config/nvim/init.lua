@@ -941,7 +941,13 @@ require("lazy").setup({
 		lazy = false,
 		priority = 1000, -- Make sure to load this before all the other start plugins.
 		config = function()
-			require("github-theme").setup({})
+			require("github-theme").setup({
+				palettes = {
+					github_dark_default = {
+						fg = { default = "#cdd9e5" },
+					},
+				},
+			})
 			vim.cmd.colorscheme("github_dark_default")
 		end,
 	},
