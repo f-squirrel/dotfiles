@@ -93,7 +93,23 @@ vim.g.maplocalleader = ","
 -- Sync clipboard between OS and Neovim (applies to both standalone and VSCode).
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  See `:help 'clipboard'`
+--  Force xclip to avoid wl-copy spawning a process that causes dock jumps on Ubuntu/Wayland.
 vim.schedule(function()
+	-- On Linux, force xclip to avoid wl-copy spawning a process that causes dock jumps on Ubuntu/Wayland.
+	if vim.fn.has("linux") == 1 and vim.fn.executable("xclip") == 1 then
+		vim.g.clipboard = {
+			name = "xclip",
+			copy = {
+				["+"] = "xclip -selection clipboard",
+				["*"] = "xclip -selection primary",
+			},
+			paste = {
+				["+"] = "xclip -selection clipboard -o",
+				["*"] = "xclip -selection primary -o",
+			},
+			cache_enabled = 0,
+		}
+	end
 	vim.o.clipboard = "unnamedplus"
 end)
 
