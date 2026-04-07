@@ -90,6 +90,36 @@ P.S. You can delete this when you're done too. It's your config now! :)
 vim.g.mapleader = ','
 vim.g.maplocalleader = ','
 
+-- [[ VSCode-specific config ]]
+-- When running inside VSCode (via vscode-neovim extension), delegate UI actions
+-- to VSCode commands and skip plugin setup entirely.
+if vim.g.vscode then
+  local notify = vim.fn.VSCodeNotify
+
+  vim.keymap.set('n', '<leader>gb', function() notify('gitlens.toggleFileBlame') end)
+  vim.keymap.set('n', '<leader>f',  function() notify('editor.action.formatDocument') end)
+  vim.keymap.set('n', '<leader>ff', function() notify('workbench.action.quickOpen') end)
+  vim.keymap.set('n', '<leader>fg', function() notify('workbench.action.showAllSymbols') end)
+  vim.keymap.set('n', '<leader>fl', function() notify('workbench.action.gotoSymbol') end)
+  vim.keymap.set('n', '<leader>be', function() notify('workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup') end)
+  vim.keymap.set('n', ']c',         function() notify('workbench.action.editor.nextChange') end)
+  vim.keymap.set('n', '[c',         function() notify('workbench.action.editor.previousChange') end)
+  vim.keymap.set('n', '<C-l>',      function() notify('workbench.action.nextEditor') end)
+  vim.keymap.set('n', '<C-h>',      function() notify('workbench.action.previousEditor') end)
+  vim.keymap.set('n', '<leader>rn', function() notify('editor.action.rename') end)
+  vim.keymap.set('n', '<leader>ch', function() notify('editor.action.toggleRenderWhitespace') end)
+  vim.keymap.set('n', ']d',         function() notify('editor.action.marker.next') end)
+  vim.keymap.set('n', '[d',         function() notify('editor.action.marker.prev') end)
+  vim.keymap.set('n', 'z=',         function() notify('editor.action.quickFix') end)
+  vim.keymap.set('n', '<leader>ca', function() notify('editor.action.quickFix') end)
+
+  vim.cmd "cnoreabbrev bd <Cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>"
+  vim.cmd "cnoreabbrev Gwrite <Cmd>call VSCodeNotify('git.stage')<CR>"
+  vim.cmd "cnoreabbrev Gdiff <Cmd>call VSCodeNotify('git.openChange')<CR>"
+
+  return
+end
+
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
