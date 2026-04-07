@@ -2,7 +2,7 @@ _: {
   programs.ripgrep = {
     enable = true;
     arguments = [
-      "--glob=!git/*"
+      "--glob=!.git/*"
       "--smart-case"
       "--with-filename"
       "--no-heading"
