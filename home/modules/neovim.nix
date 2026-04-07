@@ -8,13 +8,8 @@
     initLua = builtins.readFile ../config/nvim/init.lua;
   };
 
-  # Build-time deps for lazy.nvim plugins:
-  #   telescope-fzf-native + LuaSnip → need make (C compiler comes from stdenv or clang)
-  #   nvim-treesitter (main branch)   → needs tree-sitter CLI to compile parsers
-  home.packages = with pkgs; [
-    gnumake
-    tree-sitter
-  ];
+  # tree-sitter CLI is required by nvim-treesitter (main branch) to compile parsers
+  home.packages = [ pkgs.tree-sitter ];
 
   home.shellAliases = {
     view = "nvim -R";
