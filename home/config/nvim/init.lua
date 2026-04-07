@@ -284,6 +284,11 @@ require('lazy').setup({
         topdelete = { text = '‾' }, ---@diagnostic disable-line: missing-fields
         changedelete = { text = '~' }, ---@diagnostic disable-line: missing-fields
       },
+      on_attach = function(bufnr)
+        local gs = require 'gitsigns'
+        vim.keymap.set('n', '<leader>gb', gs.blame_line, { buffer = bufnr, desc = '[G]it [B]lame line' })
+        vim.keymap.set('n', '<leader>gB', gs.blame, { buffer = bufnr, desc = '[G]it [B]lame file' })
+      end,
     },
   },
 
