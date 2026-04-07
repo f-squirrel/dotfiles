@@ -865,19 +865,13 @@ require('lazy').setup({
     -- change the command in the config to whatever the name of that colorscheme is.
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'ellisonleao/gruvbox.nvim',
+    'projekt0n/github-nvim-theme',
+    name = 'github-theme',
+    lazy = false,
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
-      require('gruvbox').setup {
-        italic = {
-          strings = false,
-          emphasis = false,
-          comments = false,
-          operators = false,
-          folds = false,
-        },
-      }
-      vim.cmd.colorscheme 'gruvbox'
+      require('github-theme').setup {}
+      vim.cmd.colorscheme 'github_dark'
     end,
   },
 
