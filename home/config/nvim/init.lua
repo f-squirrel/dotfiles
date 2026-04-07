@@ -406,6 +406,7 @@ require('lazy').setup({
             i = {
               ['<C-k>'] = 'move_selection_previous',
               ['<C-j>'] = 'move_selection_next',
+              ['<Esc>'] = 'close',
             },
           },
         },
