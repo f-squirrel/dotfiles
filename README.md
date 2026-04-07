@@ -39,24 +39,34 @@ The username is taken from the `$USER` environment variable automatically.
 flake.nix                        # Flake inputs and homeConfigurations outputs
 setup.sh                         # Bootstrap script (installs Nix + applies config)
 home/
-  default.nix                    # Top-level Home Manager config
+  profiles/
+    full.nix                     # Full Home Manager profile
+    minimal.nix                  # Minimal Home Manager profile
   modules/
     alacritty.nix                # Alacritty terminal emulator
     atuin.nix                    # Shell history with Atuin
+    base.nix                     # Base configuration shared across profiles
     btop.nix                     # System monitor
+    dropbox.nix                  # Dropbox
     eza.nix                      # Modern ls replacement
     fzf.nix                      # Fuzzy finder
     git.nix                      # Git configuration
     neovim.nix                   # Neovim editor
-    packages.nix                 # Common CLI packages
+    packages-cli.nix             # Common CLI packages
+    packages-cpp.nix             # C++ development packages
     packages-darwin.nix          # macOS-specific packages
+    packages-gui.nix             # GUI packages
+    packages-python.nix          # Python packages
     ripgrep.nix                  # Fast grep replacement
     rust.nix                     # Rust toolchain
     starship.nix                 # Shell prompt
     zellij.nix                   # Terminal multiplexer
-    zellij/                      # Zellij config and layouts
     zoxide.nix                   # Smarter cd
     zsh.nix                      # Zsh shell configuration
+  config/
+    alacritty/                   # Alacritty config
+    nvim/                        # Neovim config
+    zellij/                      # Zellij config and layouts
 scripts/
   utils/
     vscode-open.sh               # Helper for opening files in VS Code
@@ -77,22 +87,22 @@ just init
 
 ### Available targets
 
-| Target             | Description                                                  |
-|--------------------|--------------------------------------------------------------|
-| `just apply`       | Apply Home Manager configuration for the current system      |
-| `just nix-update`  | Update all flake inputs                                      |
-| `just nix-check`   | Validate flake structure                                     |
-| `just nix-build`   | Build configuration without applying                         |
-| `just nix-shell`   | Open a shell with the built home-path                        |
-| `just gpu-setup`   | Set up GPU drivers (non-NixOS Linux, run after apply)        |
-| `just news`        | Show Home Manager news for the current system                |
-| `just docker-test` | Build and run a Docker container to test config from scratch |
-| `just init`        | Symlink linter configs from the submodule into the repo root |
-| `just lint`        | Run all linters                                              |
-| `just commit-lint` | Validate commits against Conventional Commits specification  |
-| `just md-lint`     | Lint Markdown files (pass `fix` to auto-fix)                 |
-| `just yaml-lint`   | Lint YAML files                                              |
-| `just just-fmt`    | Check justfile formatting (pass `fix` to auto-format)        |
+| Target                        | Description                                                  |
+| ----------------------------- | ------------------------------------------------------------ |
+| `just apply <profile>`        | Apply Home Manager configuration (`full` or `minimal`)       |
+| `just nix-update`             | Update all flake inputs                                      |
+| `just nix-check`              | Validate flake structure                                     |
+| `just nix-build <profile>`    | Build configuration without applying (`full` or `minimal`)   |
+| `just nix-shell`              | Open a shell with the built home-path                        |
+| `just gpu-setup`              | Set up GPU drivers (non-NixOS Linux, run after apply)        |
+| `just news <profile>`         | Show Home Manager news (`full` or `minimal`)                 |
+| `just docker-test`            | Build and run a Docker container to test config from scratch |
+| `just init`                   | Symlink linter configs from the submodule into the repo root |
+| `just lint`                   | Run all linters                                              |
+| `just commit-lint`            | Validate commits against Conventional Commits specification  |
+| `just md-lint`                | Lint Markdown files (pass `fix` to auto-fix)                 |
+| `just yaml-lint`              | Lint YAML files                                              |
+| `just just-fmt`               | Check justfile formatting (pass `fix` to auto-format)        |
 
 All linters run inside Docker — no local installation required beyond
 Docker and just.
