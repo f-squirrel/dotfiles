@@ -1,6 +1,6 @@
 import 'repo-setup/justfile'
 
-username := "dima"
+username := env_var('USER')
 git_name := "f-squirrel"
 git_email := "dmitry.b.danilov@gmail.com"
 system := `nix eval --raw --impure --expr builtins.currentSystem`

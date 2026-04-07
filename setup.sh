@@ -9,8 +9,8 @@ sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
 mkdir -p ~/.config/nix
 echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 
-# User identity (override via environment variables)
-username="${USERNAME:-dima}"
+# User identity
+username="${USER}"
 git_name="${GIT_NAME:-f-squirrel}"
 git_email="${GIT_EMAIL:-dmitry.b.danilov@gmail.com}"
 
