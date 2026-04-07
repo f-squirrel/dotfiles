@@ -231,7 +231,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.api.nvim_create_autocmd('FileType', {
   desc = 'Close gitsigns blame buffer with q or Esc',
   group = vim.api.nvim_create_augroup('gitsigns-blame-close', { clear = true }),
-  pattern = 'gitsigns.blame',
+  pattern = 'gitsigns-blame',
   callback = function(event)
     vim.keymap.set('n', 'q', '<cmd>q<CR>', { buffer = event.buf, desc = 'Close blame' })
     vim.keymap.set('n', '<Esc>', '<cmd>q<CR>', { buffer = event.buf, desc = 'Close blame' })
