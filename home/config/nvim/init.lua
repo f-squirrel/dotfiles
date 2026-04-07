@@ -286,8 +286,8 @@ require('lazy').setup({
       },
       on_attach = function(bufnr)
         local gs = require 'gitsigns'
-        vim.keymap.set('n', '<leader>gb', gs.blame_line, { buffer = bufnr, desc = '[G]it [B]lame line' })
-        vim.keymap.set('n', '<leader>gB', gs.blame, { buffer = bufnr, desc = '[G]it [B]lame file' })
+        vim.keymap.set('n', '<leader>gb', gs.blame, { buffer = bufnr, desc = '[G]it [B]lame file' })
+        vim.keymap.set('n', '<leader>gB', gs.blame_line, { buffer = bufnr, desc = '[G]it [B]lame line' })
       end,
     },
   },
