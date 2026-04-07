@@ -4,7 +4,6 @@
     with pkgs;
     [
       curl
-      devcontainer
       duf
       dust
       fd
@@ -12,10 +11,7 @@
       gnumake
       jq
       just
-      openconnect
       shellcheck
-      tokei
-      vale
       wget
     ]
     ++ lib.optionals pkgs.stdenv.isLinux [

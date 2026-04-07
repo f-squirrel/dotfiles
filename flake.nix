@@ -27,6 +27,7 @@
       gitName = builtins.getEnv "GIT_NAME";
       gitEmail = builtins.getEnv "GIT_EMAIL";
       profileNames = [
+        "dev"
         "full"
         "minimal"
       ];

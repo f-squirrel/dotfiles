@@ -11,13 +11,13 @@ and the dotfiles are fetched directly from GitHub by Nix (no `git` required).
 Run the setup script directly:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/f-squirrel/dotfiles/main/setup.sh | sh
+curl -fsSL https://raw.githubusercontent.com/f-squirrel/dotfiles/main/setup.sh | sh -s full
 ```
 
 Or, if you already have the repo cloned:
 
 ```sh
-sh setup.sh
+sh setup.sh full
 ```
 
 This installs Nix in daemon (multi-user) mode, enables flakes, applies
@@ -40,7 +40,8 @@ flake.nix                        # Flake inputs and homeConfigurations outputs
 setup.sh                         # Bootstrap script (installs Nix + applies config)
 home/
   profiles/
-    full.nix                     # Full Home Manager profile
+    dev.nix                      # Dev profile (minimal + Rust/Python/C++ toolchains, claude-code, devcontainer)
+    full.nix                     # Full profile (dev + GUI apps)
     minimal.nix                  # Minimal Home Manager profile
   modules/
     alacritty.nix                # Alacritty terminal emulator
@@ -87,22 +88,22 @@ just init
 
 ### Available targets
 
-| Target                        | Description                                                  |
-| ----------------------------- | ------------------------------------------------------------ |
-| `just apply <profile>`        | Apply Home Manager configuration (`full` or `minimal`)       |
-| `just nix-update`             | Update all flake inputs                                      |
-| `just nix-check`              | Validate flake structure                                     |
-| `just nix-build <profile>`    | Build configuration without applying (`full` or `minimal`)   |
-| `just nix-shell`              | Open a shell with the built home-path                        |
-| `just gpu-setup`              | Set up GPU drivers (non-NixOS Linux, run after apply)        |
-| `just news <profile>`         | Show Home Manager news (`full` or `minimal`)                 |
-| `just docker-test`            | Build and run a Docker container to test config from scratch |
-| `just init`                   | Symlink linter configs from the submodule into the repo root |
-| `just lint`                   | Run all linters                                              |
-| `just commit-lint`            | Validate commits against Conventional Commits specification  |
-| `just md-lint`                | Lint Markdown files (pass `fix` to auto-fix)                 |
-| `just yaml-lint`              | Lint YAML files                                              |
-| `just just-fmt`               | Check justfile formatting (pass `fix` to auto-format)        |
+| Target                     | Description                                                        |
+|----------------------------|--------------------------------------------------------------------|
+| `just apply <profile>`     | Apply Home Manager configuration (`full`, `dev`, or `minimal`)     |
+| `just nix-update`          | Update all flake inputs                                            |
+| `just nix-check`           | Validate flake structure                                           |
+| `just nix-build <profile>` | Build configuration without applying (`full`, `dev`, or `minimal`) |
+| `just nix-shell`           | Open a shell with the built home-path                              |
+| `just gpu-setup`           | Set up GPU drivers (non-NixOS Linux, run after apply)              |
+| `just news <profile>`      | Show Home Manager news (`full`, `dev`, or `minimal`)               |
+| `just docker-test`         | Build and run a Docker container to test config from scratch       |
+| `just init`                | Symlink linter configs from the submodule into the repo root       |
+| `just lint`                | Run all linters                                                    |
+| `just commit-lint`         | Validate commits against Conventional Commits specification        |
+| `just md-lint`             | Lint Markdown files (pass `fix` to auto-fix)                       |
+| `just yaml-lint`           | Lint YAML files                                                    |
+| `just just-fmt`            | Check justfile formatting (pass `fix` to auto-format)              |
 
 All linters run inside Docker — no local installation required beyond
 Docker and just.

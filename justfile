@@ -8,7 +8,7 @@ nix_user_env := "USERNAME=" + username + " GIT_NAME=" + git_name + " GIT_EMAIL="
 
 # Apply Home Manager configuration for the current system (backs up conflicting files)
 
-# profile: full or minimal
+# profile: full, dev, or minimal
 apply profile:
     {{ nix_user_env }} nix run github:nix-community/home-manager -- switch --impure --flake ".#{{ username }}-{{ profile }}@{{ system }}" -b backup
 
@@ -18,7 +18,7 @@ gpu-setup:
 
 # Show Home Manager news for the current system
 
-# profile: full or minimal
+# profile: full, dev, or minimal
 news profile:
     {{ nix_user_env }} home-manager news --impure --flake ".#{{ username }}-{{ profile }}@{{ system }}"
 
@@ -32,7 +32,7 @@ nix-check:
 
 # Build Home Manager configuration for the current system without applying
 
-# profile: full or minimal
+# profile: full, dev, or minimal
 nix-build profile:
     {{ nix_user_env }} nix build --impure ".#packages.{{ system }}.{{ username }}-{{ profile }}"
 
