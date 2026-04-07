@@ -22,6 +22,18 @@ gpu-setup:
 news profile:
     {{ nix_user_env }} home-manager news --impure --flake ".#{{ username }}-{{ profile }}@{{ system }}"
 
+# Format Nix files. mode: check (default) or fix
+nix-fmt mode="check":
+    find . -name '*.nix' -not -path './.git/*' | xargs -r nix run nixpkgs#nixfmt -- {{ if mode == "fix" { "" } else { "--check" } }}
+
+# Lint Nix files for antipatterns. mode: check (default) or fix
+nix-lint mode="check":
+    nix run nixpkgs#statix -- {{ if mode == "fix" { "fix" } else { "check" } }} .
+
+# Find dead Nix code. mode: check (default) or fix
+nix-dead mode="check":
+    nix run nixpkgs#deadnix -- {{ if mode == "fix" { "--edit" } else { "--fail" } }} .
+
 # Update all flake inputs
 nix-update:
     nix flake update
@@ -39,6 +51,9 @@ nix-build profile:
 # Run a nix-shell with the Home Manager configuration for the current system
 nix-shell:
     nix shell ./result/home-path
+
+# Run all linters
+lint: nix-fmt nix-check nix-dead nix-lint lint-base
 
 # Build and run a fresh Docker container to test the Home Manager configuration from scratch
 docker-test:
