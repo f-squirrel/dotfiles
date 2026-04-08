@@ -14,7 +14,7 @@ _: {
       time = {
         disabled = false;
         format = "at [$time]($style) ";
-        time_format = "%Y-%m-%d %T";
+        time_format = "%T";
       };
     };
   };
