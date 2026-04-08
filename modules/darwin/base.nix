@@ -5,6 +5,8 @@
   ...
 }:
 {
+  imports = [ ./fonts.nix ];
+
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;

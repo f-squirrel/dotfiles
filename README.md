@@ -70,6 +70,7 @@ modules/
     packages-gui.nix             # GUI packages (Linux only; macOS via Homebrew)
   darwin/                        # macOS-specific nix-darwin modules
     base.nix                     # nix-darwin base: home-manager integration, nixpkgs config
+    fonts.nix                    # System-wide font installation via nix-darwin
     homebrew.nix                 # Homebrew casks for GUI apps (full profile only)
     packages-darwin.nix          # macOS-specific CLI packages
 profiles/

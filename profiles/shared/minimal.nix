@@ -2,7 +2,6 @@
 {
   imports = [
     ../../modules/shared/base.nix
-    ../../modules/shared/fonts.nix
     ../../modules/shared/atuin.nix
     ../../modules/shared/btop.nix
     ../../modules/shared/eza.nix
