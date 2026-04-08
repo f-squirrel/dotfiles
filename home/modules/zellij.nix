@@ -5,6 +5,6 @@
   xdg.configFile."zellij".source = ../config/zellij;
 
   home.packages = [
-    (pkgs.writeShellScriptBin "vscode-open" (builtins.readFile ../scripts/vscode-open.sh))
+    (pkgs.writeShellScriptBin "open-ide" (builtins.readFile ../scripts/open-ide.sh))
   ];
 }

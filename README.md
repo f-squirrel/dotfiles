@@ -69,7 +69,7 @@ home/
     nvim/                        # Neovim config
     zellij/                      # Zellij config and layouts
   scripts/
-    vscode-open.sh               # Opens project in VS Code, with devcontainer support
+    open-ide.sh                  # Opens project in VS Code (with devcontainer support) or nvim
     worktree.sh                  # Git worktree helpers: wt, wtl, wtr
 ```
 
