@@ -57,5 +57,5 @@ jobs:
 
       - uses: extractions/setup-just@v2
 
-      - name: Apply darwin full profile
-        run: GIT_NAME="test" GIT_EMAIL="test@example.com" just apply full
+      - name: Build darwin full profile
+        run: GIT_NAME="test" GIT_EMAIL="test@example.com" just nix-build full

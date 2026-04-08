@@ -47,11 +47,16 @@ nix-update:
 nix-check:
     {{ nix_user_env }} nix flake check --impure
 
-# Build Home Manager configuration for the current system without applying
+# Build configuration for the current system without applying
 
 # profile: full, dev, or minimal
 nix-build profile:
-    {{ nix_user_env }} nix build --impure ".#packages.{{ system }}.{{ username }}-{{ profile }}"
+    #!/usr/bin/env sh
+    if echo "{{ system }}" | grep -q darwin; then
+        {{ nix_user_env }} nix build --impure ".#darwinConfigurations.\"{{ username }}-{{ profile }}@{{ system }}\".system"
+    else
+        {{ nix_user_env }} nix build --impure ".#packages.{{ system }}.{{ username }}-{{ profile }}"
+    fi
 
 # Run a nix-shell with the Home Manager configuration for the current system
 nix-shell:
