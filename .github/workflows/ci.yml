@@ -91,5 +91,5 @@ jobs:
         with:
           submodules: true
 
-      - name: Run full setup
-        run: sh setup.sh full
+      - name: Run dev setup
+        run: sh setup.sh dev
