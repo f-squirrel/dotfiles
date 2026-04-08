@@ -51,7 +51,6 @@ modules/
     base.nix                     # Base configuration shared across profiles
     btop.nix                     # System monitor
     eza.nix                      # Modern ls replacement
-    fonts.nix                    # Nerd fonts + fontconfig defaults
     fzf.nix                      # Fuzzy finder
     git.nix                      # Git configuration
     neovim.nix                   # Neovim editor
@@ -66,7 +65,7 @@ modules/
     zsh.nix                      # Zsh shell configuration
   linux/                         # Linux-only Home Manager modules
     dropbox.nix                  # Dropbox service (Linux only; macOS via Homebrew)
-    fonts.nix                    # Fontconfig defaults (Linux only)
+    fonts.nix                    # Nerd fonts + fontconfig defaults (Linux only)
     packages-gui.nix             # GUI packages (Linux only; macOS via Homebrew)
   darwin/                        # macOS-specific nix-darwin modules
     base.nix                     # nix-darwin base: home-manager integration, nixpkgs config
