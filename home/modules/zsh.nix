@@ -15,7 +15,7 @@ _: {
       plugins = [ "git" ];
     };
     initContent = ''
-      ${builtins.readFile ../../scripts/utils/worktree.sh}
+      ${builtins.readFile ../scripts/worktree.sh}
 
       [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
       source <(just --completions zsh)

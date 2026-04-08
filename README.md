@@ -68,9 +68,9 @@ home/
     alacritty/                   # Alacritty config
     nvim/                        # Neovim config
     zellij/                      # Zellij config and layouts
-scripts/
-  utils/
-    vscode-open.sh               # Helper for opening files in VS Code
+  scripts/
+    vscode-open.sh               # Opens project in VS Code, with devcontainer support
+    worktree.sh                  # Git worktree helpers: wt, wtl, wtr
 ```
 
 ## Repository tooling
