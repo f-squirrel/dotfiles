@@ -13,6 +13,8 @@
 
   users.users.${username}.home = "/Users/${username}";
 
+  system.primaryUser = username;
+
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = 5;
 }
