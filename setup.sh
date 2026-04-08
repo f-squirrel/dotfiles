@@ -22,14 +22,20 @@ os=$(uname -s | tr '[:upper:]' '[:lower:]')
 [ "$arch" = "arm64" ] && arch="aarch64"
 system="${arch}-${os}"
 
-# Apply Home Manager configuration directly from GitHub (no git clone needed)
+# Apply configuration directly from GitHub (no git clone needed)
 # Nix fetches the flake; git will be installed as part of the configuration
-USERNAME="$username" GIT_NAME="$git_name" GIT_EMAIL="$git_email" \
-    nix run github:nix-community/home-manager -- switch --impure \
-    --flake "github:f-squirrel/dotfiles#${username}-${profile}@${system}" -b backup
+if [ "$os" = "darwin" ]; then
+    USERNAME="$username" GIT_NAME="$git_name" GIT_EMAIL="$git_email" \
+        nix run github:LnL7/nix-darwin -- switch --impure \
+        --flake "github:f-squirrel/dotfiles#${username}-${profile}@${system}"
+else
+    USERNAME="$username" GIT_NAME="$git_name" GIT_EMAIL="$git_email" \
+        nix run github:nix-community/home-manager -- switch --impure \
+        --flake "github:f-squirrel/dotfiles#${username}-${profile}@${system}" -b backup
 
-# Set up GPU drivers if running on non-NixOS Linux (script absent on NixOS/macOS)
-gpu_setup=$(find /nix/store -maxdepth 3 -name "non-nixos-gpu-setup" 2>/dev/null | head -1)
-if [ -n "$gpu_setup" ]; then
-    sudo "$gpu_setup"
+    # Set up GPU drivers if running on non-NixOS Linux (script absent on NixOS)
+    gpu_setup=$(find /nix/store -maxdepth 3 -name "non-nixos-gpu-setup" 2>/dev/null | head -1)
+    if [ -n "$gpu_setup" ]; then
+        sudo "$gpu_setup"
+    fi
 fi

@@ -6,11 +6,16 @@ git_email := "dmitry.b.danilov@gmail.com"
 system := `nix eval --raw --impure --expr builtins.currentSystem`
 nix_user_env := "USERNAME=" + username + " GIT_NAME=" + git_name + " GIT_EMAIL=" + git_email
 
-# Apply Home Manager configuration for the current system (backs up conflicting files)
+# Apply configuration for the current system (backs up conflicting files)
 
 # profile: full, dev, or minimal
 apply profile:
-    {{ nix_user_env }} nix run github:nix-community/home-manager -- switch --impure --flake ".#{{ username }}-{{ profile }}@{{ system }}" -b backup
+    #!/usr/bin/env sh
+    if echo "{{ system }}" | grep -q darwin; then
+        {{ nix_user_env }} darwin-rebuild switch --impure --flake ".#{{ username }}-{{ profile }}@{{ system }}"
+    else
+        {{ nix_user_env }} nix run github:nix-community/home-manager -- switch --impure --flake ".#{{ username }}-{{ profile }}@{{ system }}" -b backup
+    fi
 
 # Set up GPU drivers for Nix on non-NixOS Linux (run after apply if GPU-accelerated apps break)
 gpu-setup:

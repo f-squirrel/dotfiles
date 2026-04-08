@@ -7,6 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-utils.url = "github:numtide/flake-utils";
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
@@ -18,6 +22,7 @@
     {
       nixpkgs,
       home-manager,
+      nix-darwin,
       flake-utils,
       rust-overlay,
       self,
@@ -37,6 +42,10 @@
         "x86_64-darwin"
         "aarch64-darwin"
       ];
+      darwinSystems = [
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
       mkHome =
         system: profileName:
         home-manager.lib.homeManagerConfiguration {
@@ -47,8 +56,29 @@
           modules = [ (./home/profiles + "/${profileName}.nix") ];
           extraSpecialArgs = { inherit username gitName gitEmail; };
         };
+      mkDarwin =
+        system: profileName:
+        nix-darwin.lib.darwinSystem {
+          inherit system;
+          modules = [
+            home-manager.darwinModules.home-manager
+            (./darwin/profiles + "/${profileName}.nix")
+            { nixpkgs.overlays = [ rust-overlay.overlays.default ]; }
+          ];
+          specialArgs = { inherit username gitName gitEmail; };
+        };
     in
     {
+      darwinConfigurations = builtins.listToAttrs (
+        builtins.concatMap (
+          system:
+          map (profile: {
+            name = "${username}-${profile}@${system}";
+            value = mkDarwin system profile;
+          }) profileNames
+        ) darwinSystems
+      );
+
       homeConfigurations = builtins.listToAttrs (
         builtins.concatMap (
           system:
