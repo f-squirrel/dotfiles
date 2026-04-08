@@ -66,6 +66,7 @@ modules/
     zsh.nix                      # Zsh shell configuration
   linux/                         # Linux-only Home Manager modules
     dropbox.nix                  # Dropbox service (Linux only; macOS via Homebrew)
+    fonts.nix                    # Fontconfig defaults (Linux only)
     packages-gui.nix             # GUI packages (Linux only; macOS via Homebrew)
   darwin/                        # macOS-specific nix-darwin modules
     base.nix                     # nix-darwin base: home-manager integration, nixpkgs config

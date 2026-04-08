@@ -1,4 +1,7 @@
 { ... }:
 {
-  imports = [ ../shared/minimal.nix ];
+  imports = [
+    ../shared/minimal.nix
+    ../../modules/linux/fonts.nix
+  ];
 }
