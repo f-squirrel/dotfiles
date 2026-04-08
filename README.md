@@ -50,7 +50,6 @@ modules/
     atuin.nix                    # Shell history with Atuin
     base.nix                     # Base configuration shared across profiles
     btop.nix                     # System monitor
-    dropbox.nix                  # Dropbox (Linux only; macOS via Homebrew)
     eza.nix                      # Modern ls replacement
     fonts.nix                    # Nerd fonts + fontconfig defaults
     fzf.nix                      # Fuzzy finder
@@ -58,8 +57,6 @@ modules/
     neovim.nix                   # Neovim editor
     packages-cli.nix             # Common CLI packages
     packages-cpp.nix             # C++ development packages
-    packages-darwin.nix          # macOS-specific CLI packages
-    packages-gui.nix             # GUI packages (Linux only; macOS via Homebrew)
     packages-python.nix          # Python packages
     ripgrep.nix                  # Fast grep replacement
     rust.nix                     # Rust toolchain
@@ -67,14 +64,21 @@ modules/
     zellij.nix                   # Terminal multiplexer
     zoxide.nix                   # Smarter cd
     zsh.nix                      # Zsh shell configuration
+  linux/                         # Linux-only Home Manager modules
+    dropbox.nix                  # Dropbox service (Linux only; macOS via Homebrew)
+    packages-gui.nix             # GUI packages (Linux only; macOS via Homebrew)
   darwin/                        # macOS-specific nix-darwin modules
     base.nix                     # nix-darwin base: home-manager integration, nixpkgs config
     homebrew.nix                 # Homebrew casks for GUI apps (full profile only)
+    packages-darwin.nix          # macOS-specific CLI packages
 profiles/
-  linux/                         # Home Manager profiles for Linux (standalone)
+  shared/                        # Cross-platform Home Manager profile definitions
     dev.nix                      # Dev profile (minimal + Rust/Python/C++ toolchains, claude-code, devcontainer)
-    full.nix                     # Full profile (dev + GUI apps)
     minimal.nix                  # Minimal profile
+  linux/                         # Linux-specific profile wrappers (adds Linux-only modules)
+    dev.nix                      # Dev profile (delegates to shared/dev.nix)
+    full.nix                     # Full profile (shared dev + GUI apps + Dropbox)
+    minimal.nix                  # Minimal profile (delegates to shared/minimal.nix)
   darwin/                        # nix-darwin profiles for macOS
     dev.nix                      # Darwin dev profile
     full.nix                     # Darwin full profile (+ Homebrew casks)

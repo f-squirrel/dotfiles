@@ -2,5 +2,5 @@
 {
   imports = [ ../../modules/darwin/base.nix ];
 
-  home-manager.users.${username} = import ../../profiles/linux/dev.nix;
+  home-manager.users.${username} = import ../shared/dev.nix;
 }
