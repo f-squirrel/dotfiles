@@ -5,7 +5,25 @@ on:
   pull_request:
 
 jobs:
-  lint:
+  lint-docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: true
+
+      - uses: cachix/install-nix-action@v31
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+
+      - uses: extractions/setup-just@v2
+
+      - run: just lint-base
+
+  lint-nix:
     strategy:
       matrix:
         include:
@@ -17,7 +35,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
           submodules: true
 
       - uses: cachix/install-nix-action@v31
@@ -28,7 +45,7 @@ jobs:
 
       - uses: extractions/setup-just@v2
 
-      - run: just lint
+      - run: just nix-lint-all
 
   nix-build:
     strategy:

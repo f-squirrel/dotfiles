@@ -67,8 +67,11 @@ setup-hooks:
     printf '#!/bin/sh\njust lint\n' > .git/hooks/pre-push
     chmod +x .git/hooks/pre-push
 
-# Run all linters
+# Run all linters (requires Docker for lint-base)
 lint: nix-fmt nix-check nix-dead nix-lint lint-base
+
+# Run Nix linters only (no Docker required, works on all platforms)
+nix-lint-all: nix-fmt nix-dead nix-lint
 
 # Build and run a fresh Docker container to test the Home Manager configuration from scratch
 docker-test:
