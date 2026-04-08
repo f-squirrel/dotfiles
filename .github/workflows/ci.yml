@@ -23,8 +23,15 @@ jobs:
 
       - run: just lint
 
-  nix:
-    runs-on: ubuntu-latest
+  nix-build:
+    strategy:
+      matrix:
+        include:
+          - runs-on: ubuntu-latest
+            nix_path: nixpkgs=channel:nixos-unstable
+          - runs-on: macos-latest
+            nix_path: nixpkgs=channel:nixpkgs-unstable
+    runs-on: ${{ matrix.runs-on }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -32,30 +39,31 @@ jobs:
 
       - uses: cachix/install-nix-action@v31
         with:
-          nix_path: nixpkgs=channel:nixos-unstable
+          nix_path: ${{ matrix.nix_path }}
           extra_nix_config: |
             experimental-features = nix-command flakes
 
       - uses: extractions/setup-just@v2
 
-      - run: just nix-check
+      - name: Check flake
+        if: matrix.runs-on == 'ubuntu-latest'
+        run: just nix-check
 
-      - run: just nix-build full
-
-  nix-darwin:
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: true
-
-      - uses: cachix/install-nix-action@v31
-        with:
-          nix_path: nixpkgs=channel:nixpkgs-unstable
-          extra_nix_config: |
-            experimental-features = nix-command flakes
-
-      - uses: extractions/setup-just@v2
-
-      - name: Build darwin full profile
+      - name: Build full profile
         run: GIT_NAME="test" GIT_EMAIL="test@example.com" just nix-build full
+
+  setup:
+    strategy:
+      matrix:
+        runs-on: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.runs-on }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Run full setup
+        env:
+          GIT_NAME: test
+          GIT_EMAIL: test@example.com
+        run: sh setup.sh full
