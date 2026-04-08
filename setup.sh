@@ -4,8 +4,9 @@ set -e
 profile="${1:?Usage: sh setup.sh <profile>  (e.g. full, dev, minimal)}"
 
 # Install Nix (daemon/multi-user mode)
-# shellcheck disable=SC3001
-sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon --yes
+curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install -o /tmp/nix-install.sh
+sh /tmp/nix-install.sh --daemon --yes
+rm /tmp/nix-install.sh
 
 # Source Nix in the current shell session (the installer does not update PATH)
 # shellcheck disable=SC1091

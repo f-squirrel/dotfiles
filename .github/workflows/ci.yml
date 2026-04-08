@@ -4,6 +4,10 @@ on:
   push:
   pull_request:
 
+env:
+  GIT_NAME: test
+  GIT_EMAIL: test@example.com
+
 jobs:
   lint-docker:
     runs-on: ubuntu-latest
@@ -47,6 +51,10 @@ jobs:
 
       - run: just nix-lint-all
 
+      - name: Check flake
+        if: matrix.runs-on == 'ubuntu-latest'
+        run: just nix-check
+
   nix-build:
     strategy:
       matrix:
@@ -69,12 +77,8 @@ jobs:
 
       - uses: extractions/setup-just@v2
 
-      - name: Check flake
-        if: matrix.runs-on == 'ubuntu-latest'
-        run: just nix-check
-
       - name: Build full profile
-        run: GIT_NAME="test" GIT_EMAIL="test@example.com" just nix-build full
+        run: just nix-build full
 
   setup:
     strategy:
@@ -87,7 +91,4 @@ jobs:
           submodules: true
 
       - name: Run full setup
-        env:
-          GIT_NAME: test
-          GIT_EMAIL: test@example.com
         run: sh setup.sh full
