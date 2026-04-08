@@ -1,21 +1,11 @@
-{
-  username,
-  pkgs,
-  ...
-}:
+{ username, ... }:
 {
   nixpkgs.config.allowUnfree = true;
 
   home = {
     inherit username;
-    homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${username}" else "/home/${username}";
-
-    # Do not change this when upgrading Home Manager.
-    # See https://home-manager.nix.community/options.html#opt-home.stateVersion
     stateVersion = "26.05";
   };
 
   programs.home-manager.enable = true;
-
-  targets.genericLinux.enable = pkgs.stdenv.isLinux;
 }

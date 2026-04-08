@@ -64,6 +64,7 @@ modules/
     zoxide.nix                   # Smarter cd
     zsh.nix                      # Zsh shell configuration
   linux/                         # Linux-only Home Manager modules
+    base.nix                     # Linux base: homeDirectory and genericLinux target
     dropbox.nix                  # Dropbox service (Linux only; macOS via Homebrew)
     fonts.nix                    # Nerd fonts + fontconfig defaults (Linux only)
     packages-gui.nix             # GUI packages (Linux only; macOS via Homebrew)
