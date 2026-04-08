@@ -10,7 +10,6 @@
     ../../modules/shared/git.nix
     ../../modules/shared/neovim.nix
     ../../modules/shared/packages-cli.nix
-    ../../modules/shared/packages-darwin.nix
     ../../modules/shared/ripgrep.nix
     ../../modules/shared/starship.nix
     ../../modules/shared/zellij.nix

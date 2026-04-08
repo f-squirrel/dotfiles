@@ -1,5 +1,5 @@
-{ pkgs, lib, ... }:
-lib.mkIf pkgs.stdenv.isDarwin {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     coreutils
     gnused
