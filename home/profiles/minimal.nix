@@ -1,6 +1,7 @@
 {
   imports = [
     ../modules/base.nix
+    ../modules/fonts.nix
     ../modules/atuin.nix
     ../modules/btop.nix
     ../modules/eza.nix
