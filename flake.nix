@@ -8,7 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-darwin = {
-      url = "github:LnL7/nix-darwin/master";
+      url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-utils.url = "github:numtide/flake-utils";
@@ -63,7 +63,10 @@
           modules = [
             home-manager.darwinModules.home-manager
             (./darwin/profiles + "/${profileName}.nix")
-            { nixpkgs.overlays = [ rust-overlay.overlays.default ]; }
+            {
+              nixpkgs.overlays = [ rust-overlay.overlays.default ];
+              nixpkgs.hostPlatform = system;
+            }
           ];
           specialArgs = { inherit username gitName gitEmail; };
         };
