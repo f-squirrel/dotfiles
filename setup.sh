@@ -12,9 +12,8 @@ rm /tmp/nix-install.sh
 # shellcheck disable=SC1091
 . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 
-# Enable flakes
-mkdir -p ~/.config/nix
-echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
+# Enable flakes (write to system config so it works regardless of HOME ownership)
+echo "experimental-features = nix-command flakes" | sudo tee -a /etc/nix/nix.conf
 
 # User identity
 username="${USER}"
