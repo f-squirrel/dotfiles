@@ -29,7 +29,14 @@ system="${arch}-${os}"
 # Apply configuration directly from GitHub (no git clone needed)
 # Nix fetches the flake; git will be installed as part of the configuration
 if [ "$os" = "darwin" ]; then
+    # nix-darwin manages /etc/nix/nix.conf, /etc/bashrc, /etc/zshrc —
+    # back them up so activation does not abort on unrecognized content
+    for f in /etc/nix/nix.conf /etc/bashrc /etc/zshrc; do
+        [ -f "$f" ] && sudo mv "$f" "${f}.before-nix-darwin"
+    done
+    # Enable flakes for this invocation via env (nix.conf was just backed up)
     sudo env USERNAME="$username" GIT_NAME="$git_name" GIT_EMAIL="$git_email" \
+        NIX_CONFIG="extra-experimental-features = nix-command flakes" \
         nix run github:nix-darwin/nix-darwin/master#darwin-rebuild -- switch --impure \
         --flake "github:f-squirrel/dotfiles#${username}-${profile}@${system}"
 else
