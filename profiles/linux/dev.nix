@@ -2,9 +2,9 @@
 {
   imports = [
     ./minimal.nix
-    ../modules/packages-cpp.nix
-    ../modules/packages-python.nix
-    ../modules/rust.nix
+    ../../modules/shared/packages-cpp.nix
+    ../../modules/shared/packages-python.nix
+    ../../modules/shared/rust.nix
   ];
 
   home.packages = with pkgs; [

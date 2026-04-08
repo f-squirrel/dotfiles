@@ -53,7 +53,7 @@
             inherit system;
             overlays = [ rust-overlay.overlays.default ];
           };
-          modules = [ (./home/profiles + "/${profileName}.nix") ];
+          modules = [ (./profiles/linux + "/${profileName}.nix") ];
           extraSpecialArgs = { inherit username gitName gitEmail; };
         };
       mkDarwin =
@@ -62,7 +62,7 @@
           inherit system;
           modules = [
             home-manager.darwinModules.home-manager
-            (./darwin/profiles + "/${profileName}.nix")
+            (./profiles/darwin + "/${profileName}.nix")
             {
               nixpkgs.overlays = [ rust-overlay.overlays.default ];
               nixpkgs.hostPlatform = system;

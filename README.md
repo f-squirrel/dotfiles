@@ -44,12 +44,8 @@ The username is taken from the `$USER` environment variable automatically.
 ```text
 flake.nix                        # Flake inputs, homeConfigurations and darwinConfigurations outputs
 setup.sh                         # Bootstrap script (installs Nix + applies config)
-home/
-  profiles/
-    dev.nix                      # Dev profile (minimal + Rust/Python/C++ toolchains, claude-code, devcontainer)
-    full.nix                     # Full profile (dev + GUI apps)
-    minimal.nix                  # Minimal Home Manager profile
-  modules/
+modules/
+  shared/                        # Cross-platform Home Manager modules
     alacritty.nix                # Alacritty terminal emulator
     atuin.nix                    # Shell history with Atuin
     base.nix                     # Base configuration shared across profiles
@@ -71,21 +67,25 @@ home/
     zellij.nix                   # Terminal multiplexer
     zoxide.nix                   # Smarter cd
     zsh.nix                      # Zsh shell configuration
-  config/
-    alacritty/                   # Alacritty config
-    nvim/                        # Neovim config
-    zellij/                      # Zellij config and layouts
-  scripts/
-    open-ide.sh                  # Opens project in VS Code (with devcontainer support) or nvim
-    worktree.sh                  # Git worktree helpers: wt, wtl, wtr
-darwin/
-  profiles/
+  darwin/                        # macOS-specific nix-darwin modules
+    base.nix                     # nix-darwin base: home-manager integration, nixpkgs config
+    homebrew.nix                 # Homebrew casks for GUI apps (full profile only)
+profiles/
+  linux/                         # Home Manager profiles for Linux (standalone)
+    dev.nix                      # Dev profile (minimal + Rust/Python/C++ toolchains, claude-code, devcontainer)
+    full.nix                     # Full profile (dev + GUI apps)
+    minimal.nix                  # Minimal profile
+  darwin/                        # nix-darwin profiles for macOS
     dev.nix                      # Darwin dev profile
     full.nix                     # Darwin full profile (+ Homebrew casks)
     minimal.nix                  # Darwin minimal profile
-  modules/
-    base.nix                     # nix-darwin base: home-manager integration, nixpkgs config
-    homebrew.nix                 # Homebrew casks for GUI apps (full profile only)
+config/
+  alacritty/                     # Alacritty config
+  nvim/                          # Neovim config
+  zellij/                        # Zellij config and layouts
+scripts/
+  open-ide.sh                    # Opens project in VS Code (with devcontainer support) or nvim
+  worktree.sh                    # Git worktree helpers: wt, wtl, wtr
 ```
 
 ## Repository tooling
