@@ -29,8 +29,8 @@ system="${arch}-${os}"
 # Apply configuration directly from GitHub (no git clone needed)
 # Nix fetches the flake; git will be installed as part of the configuration
 if [ "$os" = "darwin" ]; then
-    USERNAME="$username" GIT_NAME="$git_name" GIT_EMAIL="$git_email" \
-        sudo nix run github:nix-darwin/nix-darwin/master#darwin-rebuild -- switch --impure \
+    sudo env USERNAME="$username" GIT_NAME="$git_name" GIT_EMAIL="$git_email" \
+        nix run github:nix-darwin/nix-darwin/master#darwin-rebuild -- switch --impure \
         --flake "github:f-squirrel/dotfiles#${username}-${profile}@${system}"
 else
     USERNAME="$username" GIT_NAME="$git_name" GIT_EMAIL="$git_email" \
