@@ -40,9 +40,16 @@ if [ "$os" = "darwin" ]; then
         nix run github:nix-darwin/nix-darwin/master#darwin-rebuild -- switch --impure \
         --flake "github:f-squirrel/dotfiles#${username}-${profile}@${system}"
 else
+    # Build and activate via the flake's pinned home-manager version to avoid
+    # version mismatches with 'nix run github:nix-community/home-manager'
     USERNAME="$username" GIT_NAME="$git_name" GIT_EMAIL="$git_email" \
-        nix run github:nix-community/home-manager -- switch --impure \
-        --flake "github:f-squirrel/dotfiles#${username}-${profile}@${system}" -b backup
+        nix build --impure \
+        "github:f-squirrel/dotfiles#packages.${system}.${username}-${profile}" \
+        --out-link /tmp/hm-result
+
+    HOME_MANAGER_BACKUP_EXT=backup \
+        USERNAME="$username" GIT_NAME="$git_name" GIT_EMAIL="$git_email" \
+        /tmp/hm-result/activate
 
     # Set up GPU drivers if running on non-NixOS Linux (script absent on NixOS)
     gpu_setup=$(find /nix/store -maxdepth 3 -name "non-nixos-gpu-setup" 2>/dev/null | head -1)
