@@ -12,7 +12,7 @@ nix_user_env := "USERNAME=" + username + " GIT_NAME=" + git_name + " GIT_EMAIL="
 apply profile:
     #!/usr/bin/env sh
     if echo "{{ system }}" | grep -q darwin; then
-        {{ nix_user_env }} darwin-rebuild switch --impure --flake ".#{{ username }}-{{ profile }}@{{ system }}"
+        {{ nix_user_env }} nix run github:LnL7/nix-darwin -- switch --impure --flake ".#{{ username }}-{{ profile }}@{{ system }}"
     else
         {{ nix_user_env }} nix run github:nix-community/home-manager -- switch --impure --flake ".#{{ username }}-{{ profile }}@{{ system }}" -b backup
     fi
