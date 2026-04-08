@@ -15,8 +15,6 @@
     stateVersion = "26.05";
   };
 
-  fonts.fontconfig.enable = true;
-
   programs.home-manager.enable = true;
 
   targets.genericLinux.enable = pkgs.stdenv.isLinux;
