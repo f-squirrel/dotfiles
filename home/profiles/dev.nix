@@ -13,5 +13,6 @@
     openconnect
     tokei
     vale
+    vscode
   ];
 }
