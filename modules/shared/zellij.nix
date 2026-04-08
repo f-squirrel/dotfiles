@@ -24,8 +24,8 @@ in
   config = {
     programs.zellij.enable = true;
 
-    # Copy plugin/layout assets, then override config with profile-specific substitutions.
-    xdg.configFile."zellij".source = ../../config/zellij;
+    # Copy layout assets, then render the main config with profile-specific substitutions.
+    xdg.configFile."zellij/layouts".source = ../../config/zellij/layouts;
     xdg.configFile."zellij/config.kdl".source = pkgs.replaceVars ../../config/zellij/config.kdl.in {
       zellijTheme = cfg.theme;
       simplifiedUi = if cfg.simplifiedUi then "true" else "false";
