@@ -17,7 +17,7 @@
   ];
 
   custom.zellij = {
-    theme = lib.mkDefault "default";
+    theme = lib.mkDefault "nightfox";
     simplifiedUi = lib.mkDefault true;
   };
 }
