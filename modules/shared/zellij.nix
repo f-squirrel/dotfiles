@@ -24,14 +24,6 @@ in
   config = {
     programs.zellij.enable = true;
 
-    # Ensure target directory is a real folder (old generations created a symlink).
-    home.activation.zellijDirFix = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      if [ -L "$HOME/.config/zellij" ]; then
-        rm -f "$HOME/.config/zellij"
-      fi
-      mkdir -p "$HOME/.config/zellij"
-    '';
-
     # Copy layout assets, then render the main config with profile-specific substitutions.
     xdg.configFile."zellij/layouts".source = ../../config/zellij/layouts;
     xdg.configFile."zellij/config.kdl".source = pkgs.replaceVars ../../config/zellij/config.kdl.in {
