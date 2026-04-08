@@ -5,7 +5,7 @@
     pkgs.nerd-fonts.fira-code
   ];
 
-  fonts.fontconfig = {
+  fonts.fontconfig = pkgs.lib.mkIf pkgs.stdenv.isLinux {
     enable = true;
     defaultFonts.monospace = [ "JetBrainsMono Nerd Font Mono" ];
   };
