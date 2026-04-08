@@ -72,7 +72,7 @@ modules/
     base.nix                     # nix-darwin base: home-manager integration, nixpkgs config
     fonts.nix                    # System-wide font installation via nix-darwin
     homebrew.nix                 # Homebrew casks for GUI apps (full profile only)
-    packages-darwin.nix          # macOS-specific CLI packages
+    packages.nix                 # macOS-specific CLI packages
 profiles/
   shared/                        # Cross-platform Home Manager profile definitions
     dev.nix                      # Dev profile (minimal + Rust/Python/C++ toolchains, claude-code, devcontainer)

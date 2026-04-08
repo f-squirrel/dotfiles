@@ -11,7 +11,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = { inherit username gitName gitEmail; };
-    sharedModules = [ ./packages-darwin.nix ];
+    sharedModules = [ ./packages.nix ];
   };
 
   users.users.${username}.home = "/Users/${username}";
