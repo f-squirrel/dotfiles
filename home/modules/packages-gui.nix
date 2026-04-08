@@ -1,8 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
-  home.packages = with pkgs; [
-    brave
-    keepassxc
-    telegram-desktop
-  ];
+  home.packages =
+    with pkgs;
+    lib.optionals pkgs.stdenv.isLinux [
+      brave
+      keepassxc
+      telegram-desktop
+    ];
 }
