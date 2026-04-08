@@ -15,4 +15,9 @@
     vale
     vscode
   ];
+
+  custom.zellij = {
+    theme = "nightfox";
+    simplifiedUi = false;
+  };
 }

@@ -677,8 +677,8 @@ plugins {
         welcome_screen true
     }
 }
-theme "nightfox"
-simplified_ui false
+theme "@zellijTheme@"
+simplified_ui @simplifiedUi@
 serialization_interval 1000
 show_startup_tips false
 web_client {

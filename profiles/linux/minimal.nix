@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   imports = [
     ../../modules/shared/base.nix
@@ -16,4 +17,9 @@
     ../../modules/shared/zoxide.nix
     ../../modules/shared/zsh.nix
   ];
+
+  custom.zellij = {
+    theme = lib.mkDefault "default";
+    simplifiedUi = lib.mkDefault true;
+  };
 }
