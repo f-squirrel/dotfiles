@@ -12,7 +12,7 @@
 
     # Do not change this when upgrading Home Manager.
     # See https://home-manager.nix.community/options.html#opt-home.stateVersion
-    stateVersion = "24.11";
+    stateVersion = "26.05";
   };
 
   fonts.fontconfig.enable = true;
