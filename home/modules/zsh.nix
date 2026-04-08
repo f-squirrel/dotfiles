@@ -15,6 +15,8 @@ _: {
       plugins = [ "git" ];
     };
     initContent = ''
+      ${builtins.readFile ../../scripts/utils/worktree.sh}
+
       [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
       source <(just --completions zsh)
       export EDITOR="nvim"
