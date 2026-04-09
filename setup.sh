@@ -54,6 +54,6 @@ else
     # Set up GPU drivers if running on non-NixOS Linux (script absent on NixOS)
     gpu_setup=$(find /nix/store -maxdepth 3 -name "non-nixos-gpu-setup" 2>/dev/null | head -1)
     if [ -n "$gpu_setup" ]; then
-        sudo "$gpu_setup"
+        sudo "$gpu_setup" || echo "Warning: non-nixos-gpu-setup failed (non-fatal)"
     fi
 fi
