@@ -27,6 +27,6 @@ in
   custom.zellij = {
     theme = lib.mkDefault "nightfox";
     simplifiedUi = lib.mkDefault true;
-    extraConfigFiles = lib.optional (builtins.pathExists localExtraKdl) localExtraKdl;
+    extraKeybindsFiles = lib.optional (builtins.pathExists localExtraKdl) localExtraKdl;
   };
 }

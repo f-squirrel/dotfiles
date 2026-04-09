@@ -121,6 +121,32 @@ nix-locate bin/ffmpeg
 # → ffmpeg.ffmpeg   /nix/store/...-ffmpeg-.../bin/ffmpeg
 ```
 
+## Local overrides
+
+### Zellij keybindings
+
+Machine-specific keybindings (e.g. work-only shortcuts) can be added without
+touching the repo. At build time, the module checks for
+`$XDG_CONFIG_HOME/zellij/local-extra.kdl` (falling back to
+`~/.config/zellij/local-extra.kdl`) and injects its contents into the
+`shared_except "locked"` keybinds block.
+
+Create the file with raw `bind` statements — no wrapping block needed:
+
+```kdl
+// ~/.config/zellij/local-extra.kdl
+bind "Alt x" {
+    Run "my-work-tool" {
+        floating true
+        close_on_exit true
+        name "work"
+    }
+}
+```
+
+If the file does not exist the build proceeds normally — no changes required
+on machines that don't need local overrides.
+
 ## Repository tooling
 
 Tooling is provided via [just](https://just.systems) and managed through

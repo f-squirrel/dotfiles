@@ -444,7 +444,7 @@ keybinds clear-defaults=true {
         bind "Ctrl q" {
             Quit
         }
-    }
+@extraKeybinds@    }
     shared_except "locked" "move" {
         bind "Ctrl h" {
             SwitchToMode "move"
