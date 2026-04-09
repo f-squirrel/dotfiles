@@ -92,4 +92,6 @@ jobs:
           submodules: true
 
       - name: Run dev setup
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: sh setup.sh dev
