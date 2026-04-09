@@ -367,9 +367,10 @@ keybinds clear-defaults=true {
             ToggleFloatingPanes
         }
         bind "Alt b" {
-            Run "btop" {
+            Run "btop" "--preset" "1" {
                 floating true
                 close_on_exit true
+                name "btop"
             }
         }
         bind "Alt g" {

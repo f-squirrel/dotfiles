@@ -3,7 +3,6 @@ _: {
     enable = true;
     settings = {
       color_theme = "solarized_dark";
-      shown_boxes = "cpu proc";
     };
   };
 }
