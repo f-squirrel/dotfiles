@@ -1,9 +1,7 @@
-{ username, ... }:
+{ ... }:
 {
   imports = [
-    ../../modules/darwin/base.nix
+    ./dev.nix
     ../../modules/darwin/homebrew.nix
   ];
-
-  home-manager.users.${username} = import ../shared/dev.nix;
 }

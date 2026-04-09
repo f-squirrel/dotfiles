@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
+    ./minimal.nix
     ../shared/dev.nix
-    ../../modules/linux/base.nix
   ];
 }
