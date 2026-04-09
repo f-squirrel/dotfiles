@@ -29,21 +29,24 @@ in
   config = {
     programs.zellij.enable = true;
 
-    # Copy layout assets, then render the main config with profile-specific substitutions.
-    xdg.configFile."zellij/layouts".source = ../../config/zellij/layouts;
-    xdg.configFile."zellij/config.kdl".text =
-      lib.replaceStrings
-        [
-          "@zellijTheme@"
-          "@simplifiedUi@"
-          "@extraKeybinds@"
-        ]
-        [
-          cfg.theme
-          (if cfg.simplifiedUi then "true" else "false")
-          (lib.concatMapStrings (f: builtins.readFile f) cfg.extraKeybindsFiles)
-        ]
-        (builtins.readFile ../../config/zellij/config.kdl.in);
+    # Copy layout assets, theme files, then render the main config with profile-specific substitutions.
+    xdg.configFile = {
+      "zellij/layouts".source = ../../config/zellij/layouts;
+      "zellij/themes".source = ../../config/zellij/themes;
+      "zellij/config.kdl".text =
+        lib.replaceStrings
+          [
+            "@zellijTheme@"
+            "@simplifiedUi@"
+            "@extraKeybinds@"
+          ]
+          [
+            cfg.theme
+            (if cfg.simplifiedUi then "true" else "false")
+            (lib.concatMapStrings (f: builtins.readFile f) cfg.extraKeybindsFiles)
+          ]
+          (builtins.readFile ../../config/zellij/config.kdl.in);
+    };
 
     home.packages = [
       (pkgs.writeShellScriptBin "open-ide" (builtins.readFile ../../scripts/open-ide.sh))
