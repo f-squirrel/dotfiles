@@ -1,4 +1,12 @@
 { lib, ... }:
+let
+  xdgConfigHome =
+    let
+      v = builtins.getEnv "XDG_CONFIG_HOME";
+    in
+    if v != "" then v else "${builtins.getEnv "HOME"}/.config";
+  localExtraKdl = "${xdgConfigHome}/zellij/local-extra.kdl";
+in
 {
   imports = [
     ../../modules/shared/base.nix
@@ -19,5 +27,6 @@
   custom.zellij = {
     theme = lib.mkDefault "nightfox";
     simplifiedUi = lib.mkDefault true;
+    extraConfigFiles = lib.optional (builtins.pathExists localExtraKdl) localExtraKdl;
   };
 }

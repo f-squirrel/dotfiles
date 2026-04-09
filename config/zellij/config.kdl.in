@@ -402,13 +402,6 @@ keybinds clear-defaults=true {
                 name "git show"
             }
         }
-        bind "Alt c" {
-            Run "sh" "-c" "tmp=$(mktemp); make check-health 2>&1 | tee \"$tmp\"; less -R \"$tmp\"; rm -f \"$tmp\"" {
-                floating true
-                close_on_exit true
-                name "check-health"
-            }
-        }
         bind "Alt v" {
             Run "open-ide" {
                 floating true
