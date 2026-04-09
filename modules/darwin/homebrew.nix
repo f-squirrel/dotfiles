@@ -10,6 +10,7 @@ _: {
       "dropbox"
       "keepassxc"
       "telegram"
+      "zoom"
     ];
   };
 }

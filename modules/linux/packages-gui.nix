@@ -4,5 +4,6 @@
     brave
     keepassxc
     telegram-desktop
+    zoom-us
   ];
 }
