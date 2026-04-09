@@ -54,6 +54,7 @@ modules/
     fzf.nix                      # Fuzzy finder
     git.nix                      # Git configuration
     neovim.nix                   # Neovim editor
+    nix-index.nix                # nix-index-database + comma (full profile only)
     packages-cli.nix             # Common CLI packages
     packages-cpp.nix             # C++ development packages
     packages-python.nix          # Python packages
@@ -92,6 +93,32 @@ config/
 scripts/
   open-ide.sh                    # Opens project in VS Code (with devcontainer support) or nvim
   worktree.sh                    # Git worktree helpers: wt, wtl, wtr
+```
+
+## Features
+
+### nix-index and comma (full profile)
+
+The `full` profile includes [`nix-index-database`](https://github.com/nix-community/nix-index-database)
+and [`comma`](https://github.com/nix-community/comma). The database is downloaded
+automatically — no manual `nix-index` run required.
+
+**Run any binary without installing it:**
+
+```sh
+, ffmpeg -i input.mp4 output.gif
+, cowsay "hello"
+, htop
+```
+
+`comma` looks up the binary in the nix-index database and runs it via `nix run`,
+transparently. Useful for one-off tools you don't want permanently in your profile.
+
+**Find which package provides a file:**
+
+```sh
+nix-locate bin/ffmpeg
+# → ffmpeg.ffmpeg   /nix/store/...-ffmpeg-.../bin/ffmpeg
 ```
 
 ## Repository tooling

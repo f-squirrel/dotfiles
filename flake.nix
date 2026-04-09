@@ -16,16 +16,21 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    {
+    inputs@{
       nixpkgs,
       home-manager,
       nix-darwin,
       flake-utils,
       rust-overlay,
       self,
+      ...
     }:
     let
       username = builtins.getEnv "USERNAME";
@@ -53,7 +58,10 @@
             inherit system;
             overlays = [ rust-overlay.overlays.default ];
           };
-          modules = [ (./profiles/linux + "/${profileName}.nix") ];
+          modules = [
+            (./profiles/linux + "/${profileName}.nix")
+            inputs.nix-index-database.homeModules.nix-index
+          ];
           extraSpecialArgs = { inherit username gitName gitEmail; };
         };
       mkDarwin =
@@ -66,6 +74,7 @@
             {
               nixpkgs.overlays = [ rust-overlay.overlays.default ];
               nixpkgs.hostPlatform = system;
+              home-manager.sharedModules = [ inputs.nix-index-database.homeModules.nix-index ];
             }
           ];
           specialArgs = { inherit username gitName gitEmail; };
