@@ -118,7 +118,7 @@ just init
 | `just nix-shell`           | Open a shell with the built home-path                                        |
 | `just gpu-setup`           | Set up GPU drivers (non-NixOS Linux, run after apply)                        |
 | `just news <profile>`      | Show Home Manager news (`full`, `dev`, or `minimal`)                         |
-| `just docker-test`         | Build and run a Docker container to test config from scratch                 |
+| `just docker-test`         | Build and run a Docker container (`test.dockerfile`) to test from scratch    |
 | `just init`                | Symlink linter configs from the submodule into the repo root                 |
 | `just nix-lint-all`        | Run Nix linters only (no Docker required, works on all platforms)            |
 | `just lint`                | Run all linters                                                              |

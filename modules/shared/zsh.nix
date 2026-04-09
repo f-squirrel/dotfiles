@@ -9,6 +9,9 @@ _: {
       ignoreDups = true;
       share = true;
     };
+    shellAliases = {
+      tokei = "tokei --hidden";
+    };
     oh-my-zsh = {
       enable = true;
       theme = "";

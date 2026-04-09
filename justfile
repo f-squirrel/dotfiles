@@ -75,5 +75,5 @@ nix-lint-all: nix-fmt nix-dead nix-lint
 
 # Build and run a fresh Docker container to test the Home Manager configuration from scratch
 docker-test:
-    docker build --file Dockerfile.test --tag dotfiles-test .
+    docker build --file test.dockerfile --tag dotfiles-test .
     docker run --rm --interactive --tty dotfiles-test
