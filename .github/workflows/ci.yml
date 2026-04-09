@@ -7,6 +7,7 @@ on:
 env:
   GIT_NAME: test
   GIT_EMAIL: test@example.com
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   lint-docker:
@@ -92,6 +93,4 @@ jobs:
           submodules: true
 
       - name: Run dev setup
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: sh setup.sh dev
