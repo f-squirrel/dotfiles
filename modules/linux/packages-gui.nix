@@ -4,6 +4,8 @@
     brave
     keepassxc
     telegram-desktop
-    zoom-us
+    (zoom-us.override {
+      targetPkgs = _pkgs: [ gnome-settings-daemon ];
+    })
   ];
 }
