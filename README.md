@@ -120,6 +120,7 @@ just init
 | `just news <profile>`      | Show Home Manager news (`full`, `dev`, or `minimal`)                         |
 | `just docker-test`         | Build and run a Docker container to test config from scratch                 |
 | `just init`                | Symlink linter configs from the submodule into the repo root                 |
+| `just nix-lint-all`        | Run Nix linters only (no Docker required, works on all platforms)            |
 | `just lint`                | Run all linters                                                              |
 | `just commit-lint`         | Validate commits against Conventional Commits specification                  |
 | `just md-lint`             | Lint Markdown files (pass `fix` to auto-fix)                                 |
