@@ -194,24 +194,23 @@ vim.o.belloff = "all"
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
--- Clear highlights on search when pressing <Esc> in normal mode
---  See `:help hlsearch`
-vim.keymap.set("n", "<Esc>", function()
-	vim.cmd("nohlsearch")
-	vim.lsp.buf.clear_references()
-	for _, win in ipairs(vim.api.nvim_list_wins()) do
-		local buf = vim.api.nvim_win_get_buf(win)
-		if vim.bo[buf].buftype == "nofile" and vim.api.nvim_win_get_config(win).relative ~= "" then
-			vim.api.nvim_win_close(win, false)
-		end
-	end
-end, { desc = "Clear search, close hover" })
-
 -- [[ VSCode-specific config ]]
 -- When running inside VSCode (via vscode-neovim extension), delegate UI actions
 -- to VSCode commands and skip plugin setup entirely.
 if vim.g.vscode then
 	local notify = vim.fn.VSCodeNotify
+
+	-- Clear highlights on search when pressing <Esc> in normal mode
+	--  See `:help hlsearch`
+	vim.keymap.set("n", "<Esc>", function()
+		vim.cmd("nohlsearch")
+		for _, win in ipairs(vim.api.nvim_list_wins()) do
+			local buf = vim.api.nvim_win_get_buf(win)
+			if vim.bo[buf].buftype == "nofile" and vim.api.nvim_win_get_config(win).relative ~= "" then
+				vim.api.nvim_win_close(win, false)
+			end
+		end
+	end, { desc = "Clear search, close hover" })
 
 	vim.keymap.set("n", "<leader>gb", function()
 		notify("gitlens.toggleFileBlame")
@@ -268,6 +267,19 @@ if vim.g.vscode then
 
 	return
 end
+
+-- Clear highlights on search when pressing <Esc> in normal mode
+--  See `:help hlsearch`
+vim.keymap.set("n", "<Esc>", function()
+	vim.cmd("nohlsearch")
+	vim.lsp.buf.clear_references()
+	for _, win in ipairs(vim.api.nvim_list_wins()) do
+		local buf = vim.api.nvim_win_get_buf(win)
+		if vim.bo[buf].buftype == "nofile" and vim.api.nvim_win_get_config(win).relative ~= "" then
+			vim.api.nvim_win_close(win, false)
+		end
+	end
+end, { desc = "Clear search, close hover" })
 
 -- Diagnostic Config & Keymaps
 -- See :help vim.diagnostic.Opts
