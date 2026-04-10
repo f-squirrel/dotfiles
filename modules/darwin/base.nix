@@ -2,6 +2,7 @@
   username,
   gitName,
   gitEmail,
+  pkgs,
   ...
 }:
 {
@@ -14,7 +15,10 @@
     sharedModules = [ ./packages.nix ];
   };
 
-  users.users.${username}.home = "/Users/${username}";
+  users.users.${username} = {
+    home = "/Users/${username}";
+    shell = pkgs.zsh;
+  };
 
   system.primaryUser = username;
 
