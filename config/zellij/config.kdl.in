@@ -370,8 +370,8 @@ keybinds clear-defaults=true {
             Run "btop" "--preset" "1" {
                 floating true
                 close_on_exit true
-                height "80%"
-                width "80%"
+                height "24"
+                width "80"
                 name "btop"
             }
         }
