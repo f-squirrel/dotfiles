@@ -120,6 +120,24 @@ bind "Alt x" {
 If the file does not exist the build proceeds normally — no changes required
 on machines that don't need local overrides.
 
+### Chromium-based apps on virtual machines
+
+Chromium-based apps (Brave, VS Code, Chromium, etc.) installed via Nix require
+a SUID sandbox binary owned by root, which is not set up on non-NixOS Linux.
+In a VM this causes a fatal sandbox error on launch.
+
+The fix is to disable the sandbox via `~/.zshrc.local` (already sourced by the
+zsh config — no repo changes needed):
+
+```sh
+# ~/.zshrc.local
+alias brave="brave --no-sandbox"
+alias code="code --no-sandbox"
+```
+
+Do not add `--no-sandbox` on physical machines — it removes an important
+security boundary.
+
 ## Repository tooling
 
 Tooling is provided via [just](https://just.systems) and managed through
