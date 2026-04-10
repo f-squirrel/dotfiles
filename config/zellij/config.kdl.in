@@ -677,7 +677,9 @@ plugins {
 }
 theme "@zellijTheme@"
 simplified_ui @simplifiedUi@
-serialization_interval 1000
+serialization_interval 10
+session_serialization true
+pane_viewport_serialization true
 show_startup_tips false
 web_client {
     font "monospace"
