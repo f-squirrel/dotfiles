@@ -13,6 +13,11 @@
         }
       ];
       interactiveShellInit = ''
+        # Source nix daemon — fish does not read /etc/profile
+        if test -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
+          source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
+        end
+
         ${builtins.readFile ../../scripts/worktree.fish}
 
         if test -f ~/.config/fish/local.fish
