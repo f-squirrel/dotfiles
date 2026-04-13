@@ -675,6 +675,7 @@ plugins {
         welcome_screen true
     }
 }
+default_shell "zsh"
 theme "@zellijTheme@"
 simplified_ui @simplifiedUi@
 serialization_interval 5
