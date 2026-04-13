@@ -677,6 +677,7 @@ plugins {
 }
 theme "@zellijTheme@"
 simplified_ui @simplifiedUi@
+default_mode "locked"
 serialization_interval 5
 session_serialization true
 pane_viewport_serialization true
