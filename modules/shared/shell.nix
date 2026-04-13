@@ -33,7 +33,7 @@ in
   };
 
   config.programs = {
-    starship.enable = !isFish;
+    starship.enable = true;
     eza = {
       enableFishIntegration = isFish;
       enableZshIntegration = !isFish;
