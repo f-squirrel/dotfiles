@@ -465,7 +465,7 @@ keybinds clear-defaults=true {
         }
     }
     shared_except "locked" "scroll" "search" {
-        bind "Ctrl ]" {
+        bind "Ctrl /" {
             SwitchToMode "scroll"
         }
     }
@@ -544,7 +544,7 @@ keybinds clear-defaults=true {
         bind "l" {
             PageScrollDown
         }
-        bind "Ctrl ]" {
+        bind "Ctrl /" {
             SwitchToMode "normal"
         }
         bind "u" {
