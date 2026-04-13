@@ -39,11 +39,13 @@ in
             "@zellijTheme@"
             "@simplifiedUi@"
             "@extraKeybinds@"
+            "@defaultShell@"
           ]
           [
             cfg.theme
             (if cfg.simplifiedUi then "true" else "false")
             (lib.concatMapStrings (f: builtins.readFile f) cfg.extraKeybindsFiles)
+            config.custom.shell.name
           ]
           (builtins.readFile ../../config/zellij/config.kdl.in);
     };

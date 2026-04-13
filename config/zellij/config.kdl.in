@@ -675,7 +675,7 @@ plugins {
         welcome_screen true
     }
 }
-default_shell "fish"
+default_shell "@defaultShell@"
 theme "@zellijTheme@"
 simplified_ui @simplifiedUi@
 serialization_interval 5

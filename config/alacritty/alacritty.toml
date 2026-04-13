@@ -76,7 +76,7 @@ mods = "Shift"
 chars = "\u001B\r"
 
 [terminal.shell]
-program = "fish"
+program = "@defaultShell@"
 
 [window]
 dynamic_title = true

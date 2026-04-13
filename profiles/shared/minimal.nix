@@ -18,10 +18,9 @@ in
     ../../modules/shared/neovim.nix
     ../../modules/shared/packages-cli.nix
     ../../modules/shared/ripgrep.nix
-    ../../modules/shared/starship.nix
     ../../modules/shared/zellij.nix
     ../../modules/shared/zoxide.nix
-    ../../modules/shared/fish.nix
+    ../../modules/shared/shell.nix
   ];
 
   custom.zellij = {

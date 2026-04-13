@@ -2,6 +2,7 @@
   username,
   gitName,
   gitEmail,
+  shellName ? "fish",
   pkgs,
   ...
 }:
@@ -15,9 +16,10 @@
     sharedModules = [ ./packages.nix ];
   };
 
+  # Must match custom.shell.name set in the HM profile.
   users.users.${username} = {
     home = "/Users/${username}";
-    shell = pkgs.fish;
+    shell = pkgs.${shellName};
   };
 
   system.primaryUser = username;
