@@ -21,7 +21,7 @@ in
     ../../modules/shared/starship.nix
     ../../modules/shared/zellij.nix
     ../../modules/shared/zoxide.nix
-    ../../modules/shared/zsh.nix
+    ../../modules/shared/fish.nix
   ];
 
   custom.zellij = {

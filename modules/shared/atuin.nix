@@ -1,6 +1,7 @@
 _: {
   programs.atuin = {
     enable = true;
+    enableFishIntegration = true;
     settings = {
       auto_sync = false;
       search_mode = "prefix";

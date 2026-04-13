@@ -17,7 +17,7 @@
 
   users.users.${username} = {
     home = "/Users/${username}";
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
 
   system.primaryUser = username;

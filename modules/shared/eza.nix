@@ -1,7 +1,7 @@
 _: {
   programs.eza = {
     enable = true;
-    enableZshIntegration = true;
+    enableFishIntegration = true;
     icons = "auto";
     git = true;
     extraOptions = [
@@ -10,7 +10,7 @@ _: {
     ];
   };
 
-  programs.zsh.shellAliases = {
+  home.shellAliases = {
     ls = "eza";
     ll = "eza -l";
     la = "eza -la";

@@ -76,7 +76,7 @@ mods = "Shift"
 chars = "\u001B\r"
 
 [terminal.shell]
-program = "zsh"
+program = "fish"
 
 [window]
 dynamic_title = true
