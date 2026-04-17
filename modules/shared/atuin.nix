@@ -2,7 +2,8 @@ _: {
   programs.atuin = {
     enable = true;
     settings = {
-      auto_sync = false;
+      auto_sync = true;
+      sync_frequency = "1h";
       search_mode = "prefix";
       filter_mode = "global";
       style = "compact";
