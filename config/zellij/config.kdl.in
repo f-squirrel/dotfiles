@@ -388,11 +388,11 @@ keybinds clear-defaults=true {
             }
         }
         bind "Alt g" {
-            Run "sh" "-c" "git log --oneline --decorate --graph" {
+            Run "git-log-pretty" {
                 floating true
                 close_on_exit true
-                height "80%"
-                width "80%"
+                height "100%"
+                width "100%"
                 name "git log"
             }
         }

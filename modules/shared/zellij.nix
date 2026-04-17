@@ -52,6 +52,7 @@ in
 
     home.packages = [
       (pkgs.writeShellScriptBin "open-ide" (builtins.readFile ../../scripts/open-ide.sh))
+      (pkgs.writeShellScriptBin "git-log-pretty" (builtins.readFile ../../scripts/git-log-pretty.sh))
     ];
   };
 }
