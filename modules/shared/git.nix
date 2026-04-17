@@ -40,6 +40,7 @@
       navigate = true;
       syntax-theme = "Dracula";
       paging = "always";
+      pager = "less -R -+F";
       side-by-side = true;
       true-color = "always";
     };
