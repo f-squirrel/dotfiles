@@ -62,6 +62,8 @@ modules/
     starship.nix                 # Shell prompt
     zellij.nix                   # Terminal multiplexer
     zoxide.nix                   # Smarter cd
+    fish.nix                     # Fish shell configuration
+    shell.nix                    # Shell selection option
     zsh.nix                      # Zsh shell configuration
   linux/                         # Linux-only Home Manager modules
     base.nix                     # Linux base: homeDirectory and genericLinux target
@@ -92,9 +94,19 @@ config/
 scripts/
   open-ide.sh                    # Opens project in VS Code (with devcontainer support) or nvim
   worktree.sh                    # Git worktree helpers: wt, wtl, wtr
+  worktree.fish                  # Git worktree helpers for fish
 ```
 
 ## Local overrides
+
+### Shell local config
+
+Machine-specific aliases and functions can be added without touching the repo:
+
+- **Fish:** `~/.config/fish/local.fish`
+- **Zsh:** `~/.zshrc.local`
+
+Both files are sourced automatically if they exist.
 
 ### Zellij keybindings
 
@@ -126,11 +138,11 @@ Chromium-based apps (Brave, VS Code, Chromium, etc.) installed via Nix require
 a SUID sandbox binary owned by root, which is not set up on non-NixOS Linux.
 In a VM this causes a fatal sandbox error on launch.
 
-The fix is to disable the sandbox via `~/.zshrc.local` (already sourced by the
-zsh config — no repo changes needed):
+The fix is to disable the sandbox via the shell's local config file
+(already sourced — no repo changes needed):
 
 ```sh
-# ~/.zshrc.local
+# ~/.zshrc.local (zsh) or ~/.config/fish/local.fish (fish)
 alias brave="brave --no-sandbox"
 alias code="code --no-sandbox"
 ```
