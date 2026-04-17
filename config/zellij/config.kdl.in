@@ -676,7 +676,7 @@ plugins {
     autolock location="https://github.com/fresh2dev/zellij-autolock/releases/download/0.2.2/zellij-autolock.wasm" {
         is_enabled true
         triggers "nvim|vim|fzf|zoxide|atuin"
-        reaction_seconds "0.3"
+        reaction_seconds "0.5"
         print_to_log true
     }
     compact-bar location="zellij:compact-bar"
