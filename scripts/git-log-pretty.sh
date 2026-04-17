@@ -29,4 +29,4 @@ awk -F'|' '{
   } else {
     printf "\033[33m%s\033[0m %s \033[2;32m— %s \033[2;34m%s\033[0m\n", hash, rest, author, date
   }
-}'
+}' | less -R
