@@ -3,7 +3,7 @@ keybinds clear-defaults=true {
         bind "Ctrl Shift g" {
             SwitchToMode "normal"
         }
-        bind "Alt z" {
+        bind "Alt Shift z" {
             MessagePlugin "autolock" {
                 payload "disable"
             }
@@ -348,34 +348,34 @@ keybinds clear-defaults=true {
         }
     }
     shared_except "locked" {
-        bind "Alt left" {
+        bind "Alt Shift left" {
             MoveFocusOrTab "left"
         }
-        bind "Alt down" {
+        bind "Alt Shift down" {
             MoveFocus "down"
         }
-        bind "Alt up" {
+        bind "Alt Shift up" {
             MoveFocus "up"
         }
-        bind "Alt right" {
+        bind "Alt Shift right" {
             MoveFocusOrTab "right"
         }
-        bind "Alt +" {
+        bind "Alt Shift +" {
             Resize "Increase"
         }
-        bind "Alt -" {
+        bind "Alt Shift -" {
             Resize "Decrease"
         }
-        bind "Alt =" {
+        bind "Alt Shift =" {
             Resize "Increase"
         }
-        bind "Alt [" {
+        bind "Alt Shift [" {
             PreviousSwapLayout
         }
-        bind "Alt ]" {
+        bind "Alt Shift ]" {
             NextSwapLayout
         }
-        bind "Alt f" {
+        bind "Alt Shift f" {
             ToggleFloatingPanes
         }
         bind "Alt Shift b" {
@@ -385,15 +385,6 @@ keybinds clear-defaults=true {
                 height "80%"
                 width "80%"
                 name "btop"
-            }
-        }
-        bind "Alt g" {
-            Run "git-log-pretty" {
-                floating true
-                close_on_exit true
-                height "100%"
-                width "100%"
-                name "git log"
             }
         }
         bind "Alt Shift g" {
@@ -439,28 +430,28 @@ keybinds clear-defaults=true {
         bind "Ctrl Shift g" {
             SwitchToMode "locked"
         }
-        bind "Alt h" {
+        bind "Alt Shift h" {
             MoveFocusOrTab "left"
         }
-        bind "Alt i" {
+        bind "Alt Shift i" {
             MoveTab "left"
         }
-        bind "Alt j" {
+        bind "Alt Shift j" {
             MoveFocus "down"
         }
-        bind "Alt k" {
+        bind "Alt Shift k" {
             MoveFocus "up"
         }
-        bind "Alt l" {
+        bind "Alt Shift l" {
             MoveFocusOrTab "right"
         }
-        bind "Alt n" {
+        bind "Alt Shift n" {
             NewPane
         }
-        bind "Alt o" {
+        bind "Alt Shift o" {
             MoveTab "right"
         }
-        bind "Alt p" {
+        bind "Alt Shift p" {
             TogglePaneInGroup
         }
         bind "Alt Shift p" {
