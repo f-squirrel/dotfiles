@@ -378,7 +378,7 @@ keybinds clear-defaults=true {
         bind "Alt f" {
             ToggleFloatingPanes
         }
-        bind "Alt b" {
+        bind "Alt Shift b" {
             Run "btop" "--preset" "1" {
                 floating true
                 close_on_exit true
@@ -405,7 +405,7 @@ keybinds clear-defaults=true {
                 name "lazygit"
             }
         }
-        bind "Alt d" {
+        bind "Alt Shift d" {
             // sleep gives zellij time to resize the PTY before git queries terminal dimensions;
             // without it, delta renders at the default small size
             Run "sh" "-c" "sleep 0.05 && git diff" {
@@ -416,7 +416,7 @@ keybinds clear-defaults=true {
                 name "git diff"
             }
         }
-        bind "Alt s" {
+        bind "Alt Shift s" {
             // sleep gives zellij time to resize the PTY before git queries terminal dimensions;
             // without it, delta renders at the default small size
             Run "sh" "-c" "sleep 0.05 && git show" {
@@ -427,7 +427,7 @@ keybinds clear-defaults=true {
                 name "git show"
             }
         }
-        bind "Alt v" {
+        bind "Alt Shift v" {
             Run "open-ide" {
                 floating true
                 close_on_exit true
