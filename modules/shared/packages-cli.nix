@@ -10,6 +10,7 @@
     gnumake
     jq
     just
+    sd
     shellcheck
     wget
   ];
