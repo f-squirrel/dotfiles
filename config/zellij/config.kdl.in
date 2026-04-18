@@ -396,6 +396,15 @@ keybinds clear-defaults=true {
                 name "git log"
             }
         }
+        bind "Alt Shift g" {
+            Run "lazygit" "log" {
+                floating true
+                close_on_exit true
+                height "100%"
+                width "100%"
+                name "lazygit"
+            }
+        }
         bind "Alt d" {
             // sleep gives zellij time to resize the PTY before git queries terminal dimensions;
             // without it, delta renders at the default small size

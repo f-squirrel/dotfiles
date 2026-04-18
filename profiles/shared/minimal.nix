@@ -15,6 +15,7 @@ in
     ../../modules/shared/eza.nix
     ../../modules/shared/fzf.nix
     ../../modules/shared/git.nix
+    ../../modules/shared/lazygit.nix
     ../../modules/shared/neovim.nix
     ../../modules/shared/packages-cli.nix
     ../../modules/shared/ripgrep.nix
