@@ -674,7 +674,7 @@ keybinds clear-defaults=true {
 plugins {
     about location="zellij:about"
     autolock location="https://github.com/fresh2dev/zellij-autolock/releases/download/0.2.2/zellij-autolock.wasm" {
-        is_enabled true
+        is_enabled false
         triggers "nvim|vim|fzf|zoxide|atuin"
         reaction_seconds "0.5"
         print_to_log true
@@ -694,7 +694,7 @@ plugins {
     }
 }
 load_plugins {
-    autolock
+    // autolock
 }
 default_shell "@defaultShell@"
 theme "@zellijTheme@"
