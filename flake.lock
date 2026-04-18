@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "catppuccin-lazygit": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775052480,
+        "narHash": "sha256-dwCRILNi2Qo8X0Y9ESnx2IjU1kSi4iOfcz5CoM2vSHY=",
+        "owner": "catppuccin",
+        "repo": "lazygit",
+        "rev": "798ad2e75a11766e9ba50e76e59aea6a81eb4866",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "lazygit",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -77,6 +93,7 @@
     },
     "root": {
       "inputs": {
+        "catppuccin-lazygit": "catppuccin-lazygit",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",

@@ -16,6 +16,10 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    catppuccin-lazygit = {
+      url = "github:catppuccin/lazygit";
+      flake = false;
+    };
   };
 
   outputs =
@@ -25,6 +29,7 @@
       nix-darwin,
       flake-utils,
       rust-overlay,
+      catppuccin-lazygit,
       self,
     }:
     let
@@ -54,7 +59,14 @@
             overlays = [ rust-overlay.overlays.default ];
           };
           modules = [ (./profiles/linux + "/${profileName}.nix") ];
-          extraSpecialArgs = { inherit username gitName gitEmail; };
+          extraSpecialArgs = {
+            inherit
+              username
+              gitName
+              gitEmail
+              catppuccin-lazygit
+              ;
+          };
         };
       mkDarwin =
         system: profileName:
@@ -68,7 +80,14 @@
               nixpkgs.hostPlatform = system;
             }
           ];
-          specialArgs = { inherit username gitName gitEmail; };
+          specialArgs = {
+            inherit
+              username
+              gitName
+              gitEmail
+              catppuccin-lazygit
+              ;
+          };
         };
     in
     {

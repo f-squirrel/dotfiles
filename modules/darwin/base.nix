@@ -2,6 +2,7 @@
   username,
   gitName,
   gitEmail,
+  catppuccin-lazygit,
   shellName ? "fish",
   pkgs,
   ...
@@ -12,7 +13,14 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit username gitName gitEmail; };
+    extraSpecialArgs = {
+      inherit
+        username
+        gitName
+        gitEmail
+        catppuccin-lazygit
+        ;
+    };
     sharedModules = [ ./packages.nix ];
   };
 
