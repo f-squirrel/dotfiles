@@ -29,10 +29,6 @@
         set -gx EDITOR nvim
         set -gx VISUAL nvim
         set -gx PIP_REQUIRE_VIRTUALENV true
-
-        # Rebind fzf file search from Ctrl+t to Ctrl+f
-        bind \cf fzf-file-widget
-        bind -e \ct
       '';
     };
   };
