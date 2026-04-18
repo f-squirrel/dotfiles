@@ -1,6 +1,6 @@
 keybinds clear-defaults=true {
     locked {
-        bind "Ctrl g" {
+        bind "Ctrl Shift g" {
             SwitchToMode "normal"
         }
         bind "Alt z" {
@@ -72,7 +72,7 @@ keybinds clear-defaults=true {
         bind "p" {
             SwitchFocus
         }
-        bind "Ctrl p" {
+        bind "Ctrl Shift p" {
             SwitchToMode "normal"
         }
         bind "r" {
@@ -181,7 +181,7 @@ keybinds clear-defaults=true {
             ToggleActiveSyncTab
             SwitchToMode "normal"
         }
-        bind "Ctrl t" {
+        bind "Ctrl Shift t" {
             SwitchToMode "normal"
         }
         bind "x" {
@@ -238,7 +238,7 @@ keybinds clear-defaults=true {
         bind "l" {
             Resize "Increase right"
         }
-        bind "Ctrl n" {
+        bind "Ctrl Shift n" {
             SwitchToMode "normal"
         }
     }
@@ -258,7 +258,7 @@ keybinds clear-defaults=true {
         bind "h" {
             MovePane "left"
         }
-        bind "Ctrl h" {
+        bind "Ctrl Shift h" {
             SwitchToMode "normal"
         }
         bind "j" {
@@ -322,7 +322,7 @@ keybinds clear-defaults=true {
             }
             SwitchToMode "normal"
         }
-        bind "Ctrl o" {
+        bind "Ctrl Shift o" {
             SwitchToMode "normal"
         }
         bind "p" {
@@ -436,7 +436,7 @@ keybinds clear-defaults=true {
                 name "vscode"
             }
         }
-        bind "Ctrl g" {
+        bind "Ctrl Shift g" {
             SwitchToMode "locked"
         }
         bind "Alt h" {
@@ -466,42 +466,42 @@ keybinds clear-defaults=true {
         bind "Alt Shift p" {
             ToggleGroupMarking
         }
-        bind "Ctrl q" {
+        bind "Ctrl Shift q" {
             Quit
         }
 @extraKeybinds@    }
     shared_except "locked" "move" {
-        bind "Ctrl h" {
+        bind "Ctrl Shift h" {
             SwitchToMode "move"
         }
     }
     shared_except "locked" "session" {
-        bind "Ctrl o" {
+        bind "Ctrl Shift o" {
             SwitchToMode "session"
         }
     }
     shared_except "locked" "scroll" "search" "tmux" {
-        bind "Ctrl b" {
+        bind "Ctrl Shift b" {
             SwitchToMode "tmux"
         }
     }
     shared_except "locked" "scroll" "search" {
-        bind "Ctrl /" {
+        bind "Ctrl Shift /" {
             SwitchToMode "scroll"
         }
     }
     shared_except "locked" "tab" {
-        bind "Ctrl t" {
+        bind "Ctrl Shift t" {
             SwitchToMode "tab"
         }
     }
     shared_except "locked" "pane" {
-        bind "Ctrl p" {
+        bind "Ctrl Shift p" {
             SwitchToMode "pane"
         }
     }
     shared_except "locked" "resize" {
-        bind "Ctrl n" {
+        bind "Ctrl Shift n" {
             SwitchToMode "resize"
         }
     }
@@ -540,17 +540,17 @@ keybinds clear-defaults=true {
         bind "right" {
             PageScrollDown
         }
-        bind "Ctrl b" {
+        bind "Ctrl Shift b" {
             PageScrollUp
         }
-        bind "Ctrl c" {
+        bind "Ctrl Shift c" {
             ScrollToBottom
             SwitchToMode "normal"
         }
         bind "d" {
             HalfPageScrollDown
         }
-        bind "Ctrl f" {
+        bind "Ctrl Shift f" {
             PageScrollDown
         }
         bind "h" {
@@ -565,7 +565,7 @@ keybinds clear-defaults=true {
         bind "l" {
             PageScrollDown
         }
-        bind "Ctrl /" {
+        bind "Ctrl Shift /" {
             SwitchToMode "normal"
         }
         bind "u" {
@@ -573,7 +573,7 @@ keybinds clear-defaults=true {
         }
     }
     entersearch {
-        bind "Ctrl c" {
+        bind "Ctrl Shift c" {
             SwitchToMode "scroll"
         }
         bind "esc" {
@@ -590,7 +590,7 @@ keybinds clear-defaults=true {
         }
     }
     shared_among "renametab" "renamepane" {
-        bind "Ctrl c" {
+        bind "Ctrl Shift c" {
             SwitchToMode "normal"
         }
     }
@@ -639,7 +639,7 @@ keybinds clear-defaults=true {
         bind "[" {
             SwitchToMode "scroll"
         }
-        bind "Ctrl b" {
+        bind "Ctrl Shift b" {
             Write 2
             SwitchToMode "normal"
         }
