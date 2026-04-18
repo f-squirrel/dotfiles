@@ -13,6 +13,7 @@ in
     ../../modules/shared/atuin.nix
     ../../modules/shared/btop.nix
     ../../modules/shared/eza.nix
+    ../../modules/shared/bat.nix
     ../../modules/shared/fzf.nix
     ../../modules/shared/git.nix
     ../../modules/shared/lazygit.nix
