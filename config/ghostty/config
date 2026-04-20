@@ -1,0 +1,16 @@
+font-family = JetBrainsMono Nerd Font
+font-size = 12
+
+theme = Atom One Dark
+
+window-decoration = false
+
+keybind = ctrl+shift+t=unbind
+keybind = ctrl+shift+n=unbind
+keybind = ctrl+shift+o=unbind
+keybind = ctrl+shift+q=unbind
+keybind = ctrl+shift+p=unbind
+keybind = ctrl+shift+h=unbind
+keybind = ctrl+shift+b=unbind
+keybind = ctrl+shift+g=unbind
+keybind = ctrl+shift+slash=unbind
