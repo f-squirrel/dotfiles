@@ -6,7 +6,7 @@ theme = Atom One Dark
 # gtk-tabs-location = bottom
 
 window-decoration = false
-fullscreen = true
+maximize = true
 # window-padding-color = extend
 
 keybind = ctrl+shift+t=unbind
