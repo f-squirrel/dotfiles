@@ -3,7 +3,10 @@ font-size = 12
 
 theme = Atom One Dark
 
+# gtk-tabs-location = bottom
+
 window-decoration = false
+# window-padding-color = extend
 
 keybind = ctrl+shift+t=unbind
 keybind = ctrl+shift+n=unbind
@@ -14,3 +17,9 @@ keybind = ctrl+shift+h=unbind
 keybind = ctrl+shift+b=unbind
 keybind = ctrl+shift+g=unbind
 keybind = ctrl+shift+slash=unbind
+
+keybind = super+shift+t=new_tab
+keybind = super+shift+n=new_window
+keybind = super+shift+o=new_split:right
+keybind = super+shift+q=quit
+keybind = super+shift+p=toggle_command_palette
