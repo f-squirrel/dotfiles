@@ -5,6 +5,5 @@
     clang-tools
     cmake
     ninja
-    universal-ctags
   ];
 }

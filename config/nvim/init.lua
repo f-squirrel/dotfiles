@@ -890,7 +890,6 @@ require("lazy").setup({
 		event = "VimEnter",
 		version = "1.*",
 		dependencies = {
-			{ "netmute/blink-cmp-ctags" },
 			-- Snippet Engine
 			{
 				"L3MON4D3/LuaSnip",
@@ -962,14 +961,8 @@ require("lazy").setup({
 			},
 
 			sources = {
-				default = { "lsp", "path", "snippets", "ctags" },
-				providers = {
-					ctags = {
-						name = "ctags",
-						module = "blink-cmp-ctags",
-						score_offset = -5,
-					},
-				},
+				default = { "lsp", "path", "snippets" },
+				providers = {},
 			},
 
 			snippets = { preset = "luasnip" },
