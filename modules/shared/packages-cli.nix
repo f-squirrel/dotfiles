@@ -11,6 +11,7 @@
     jq
     just
     lumen
+    mdcat
     sd
     shellcheck
     wget
