@@ -20,6 +20,10 @@
       url = "github:catppuccin/lazygit";
       flake = false;
     };
+    lumen = {
+      url = "github:jnsahaj/lumen";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -30,6 +34,7 @@
       flake-utils,
       rust-overlay,
       catppuccin-lazygit,
+      lumen,
       self,
     }:
     let
@@ -56,7 +61,10 @@
         home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
             inherit system;
-            overlays = [ rust-overlay.overlays.default ];
+            overlays = [
+              rust-overlay.overlays.default
+              lumen.overlays.default
+            ];
           };
           modules = [ (./profiles/linux + "/${profileName}.nix") ];
           extraSpecialArgs = {
@@ -76,7 +84,10 @@
             home-manager.darwinModules.home-manager
             (./profiles/darwin + "/${profileName}.nix")
             {
-              nixpkgs.overlays = [ rust-overlay.overlays.default ];
+              nixpkgs.overlays = [
+                rust-overlay.overlays.default
+                lumen.overlays.default
+              ];
               nixpkgs.hostPlatform = system;
             }
           ];

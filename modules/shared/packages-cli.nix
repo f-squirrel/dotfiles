@@ -10,6 +10,7 @@
     gnumake
     jq
     just
+    lumen
     sd
     shellcheck
     wget
