@@ -397,14 +397,12 @@ keybinds clear-defaults=true {
             }
         }
         bind "Alt Shift d" {
-            // sleep gives zellij time to resize the PTY before git queries terminal dimensions;
-            // without it, delta renders at the default small size
-            Run "sh" "-c" "sleep 0.05 && git diff" {
+            Run "lumen" "diff" {
                 floating true
                 close_on_exit true
                 width "100%"
                 height "100%"
-                name "git diff"
+                name "lumen diff"
             }
         }
         bind "Alt Shift s" {
